@@ -36,8 +36,7 @@ Tidak termasuk dalam MVP ini: gameplay dadu, gameplay kartu, akun pengguna, peny
 
 1. **Splash Screen**
    - Tampilkan logo UNIPMA selama 2 detik.
-   - Lanjut ke placeholder logo Probify selama 2 detik.
-   - Sediakan tombol **Lewati** agar pemain dapat langsung menuju menu utama.
+   - Lanjut ke placeholder logo Probify selama 2 detik (total 4 detik durasi sinematik penuh tanpa tombol lewati).
 2. **Menu Utama**
    - **Mulai Bermain**: menuju pilih mode.
    - **Buku Rumus Koin**: membuka materi ringkas teori peluang koin.

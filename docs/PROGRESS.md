@@ -75,7 +75,13 @@
 - Mengunci gulir halaman, memusatkan panggung, dan menambahkan bingkai serta vignette.
 - Menambah tombol bertekan, nada hover, bayangan koin, kilau dan getaran meja.
 
-## 2026-11-27 — Fase 1 Visual & Layout Upgrade
+## 2026-11-27 — Penyempurnaan dan Finalisasi Fase 1
+
+- Menetapkan durasi splash penuh 4 detik (2 detik logo UNIPMA + 2 detik logo Probify) tanpa tombol lewati untuk pengalaman intro sinematik yang utuh.
+- Memperbaiki riwayat navigasi (`history`) pada `gameController.js`: membersihkan tumpukan saat masuk ke `MAIN_MENU` sehingga aksi `Escape` atau tombol kembali tidak dapat mundur ke layar splash.
+- Memperbaiki transisi layar di `screenManager.js` agar dapat menangani pergantian layar secara mulus tanpa terkunci (*freeze*) jika terjadi klik cepat.
+- Memperbarui dokumentasi `CONCEPT_GDD.md` dan menandai checklist `Fase 1` di `TODO.md` sebagai tuntas (100% sempurna).
+- Mempertahankan batasan ketat: tidak menyentuh kode Fase 2 dan Fase 3.
 
 - Menstandarkan seluruh pembungkus layar ke layout flex vertikal dengan alignment center dan responsivitas mobile.
 - Menambahkan identitas splash UNIPMA lengkap dengan nama universitas dan fakultas.

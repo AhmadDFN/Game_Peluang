@@ -1,12 +1,17 @@
 import { getState, subscribe } from "../core/gameState.js?v=11803ac";
 
 let currentScreen = null;
-let locked = false;
+let transitionTimer = null;
+let pendingFinish = null;
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 export const showScreen = (screenId, direction = "forward") => {
   const next = document.querySelector(`[data-screen="${screenId}"]`);
-  if (!next || screenId === currentScreen || locked) return;
+  if (!next || screenId === currentScreen) return;
+  if (pendingFinish) {
+    clearTimeout(transitionTimer);
+    pendingFinish();
+  }
   const previous = currentScreen && document.querySelector(`[data-screen="${currentScreen}"]`);
   const finish = () => {
     document.querySelectorAll("[data-screen]").forEach((screen) => {
@@ -17,21 +22,17 @@ export const showScreen = (screenId, direction = "forward") => {
       screen.setAttribute("aria-hidden", String(!active));
     });
     currentScreen = screenId;
-    locked = false;
+    pendingFinish = null;
+    transitionTimer = null;
   };
-  locked = true;
+  pendingFinish = finish;
   next.hidden = false;
   next.classList.add("is-active");
   next.setAttribute("aria-hidden", "false");
-  if (reducedMotion()) {
-    if (previous) previous.classList.add(direction === "back" ? "is-exiting-back" : "is-exiting-forward");
-    next.classList.add(direction === "back" ? "is-entering-back" : "is-entering-forward");
-    window.setTimeout(finish, 130);
-    return;
-  }
+  const duration = reducedMotion() ? 130 : 220;
   next.classList.add(direction === "back" ? "is-entering-back" : "is-entering-forward");
   if (previous) previous.classList.add(direction === "back" ? "is-exiting-back" : "is-exiting-forward");
-  window.setTimeout(finish, 220);
+  transitionTimer = window.setTimeout(finish, duration);
 };
 
 export const initScreenManager = () => {

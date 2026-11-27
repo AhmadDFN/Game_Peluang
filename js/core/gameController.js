@@ -11,7 +11,13 @@ const history = [];
 const goTo = (screen, direction = "forward") => {
   const current = getState().app.screen;
   if (screen === current) return;
-  if (direction === "back") history.pop(); else history.push(current);
+  if (screen === SCREEN.MAIN_MENU) {
+    history.length = 0;
+  } else if (direction === "back") {
+    history.pop();
+  } else {
+    history.push(current);
+  }
   updateState((state) => ({ ...state, app: { ...state.app, screen, transitionDirection: direction } }));
 };
 const goBack = () => {
@@ -27,7 +33,6 @@ const previewCoinToss = () => {
 };
 
 const handleAction = (action) => {
-  if (action === "skip-splash") return goTo(SCREEN.MAIN_MENU);
   if (action === "go-main-menu" || action === "go-back") return goBack();
   if (action === "go-mode-select") return goTo(SCREEN.MODE_SELECT);
   if (action === "go-level-select") {

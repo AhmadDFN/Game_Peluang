@@ -30,20 +30,58 @@ export function animateCoinToss(outcomes) {
   const template = first.cloneNode(true); row.replaceChildren();
   outcomes.forEach((v, index) => {
     const coin = template.cloneNode(true);
+    // Ganti seluruh id defs SVG dengan suffix indeks unik per koin agar tidak konflik multi-koin
     const ids = new Map();
-    coin.querySelectorAll("[id]").forEach(el => { const previous = el.id; const next = `mint-${index}-${previous.replace(/^mint-\d+-/, "")}`; ids.set(previous, next); el.id = next; });
-    coin.querySelectorAll("[href], [fill], [stroke]").forEach(el => { for (const attr of ["href", "fill", "stroke"]) { const value = el.getAttribute(attr); if (!value) continue; let updated = value; ids.forEach((id, previous) => { updated = updated.replaceAll(`#${previous}`, `#${id}`); }); el.setAttribute(attr, updated); } });
-    coin.style.setProperty("--coin-final-turn", v === "G" ? "1620deg" : "1440deg");
+    coin.querySelectorAll("[id]").forEach(el => {
+      const prev = el.id;
+      const next = `nw-${index}-${prev.replace(/^nw-\d+-/, "")}`;
+      ids.set(prev, next); el.id = next;
+    });
+    coin.querySelectorAll("[href], [fill], [stroke]").forEach(el => {
+      for (const attr of ["href", "fill", "stroke"]) {
+        const val = el.getAttribute(attr); if (!val) continue;
+        let updated = val;
+        ids.forEach((next, prev) => { updated = updated.replaceAll(`#${prev}`, `#${next}`); });
+        el.setAttribute(attr, updated);
+      }
+    });
+    // Kelipatan 360deg untuk A, +180deg untuk G (presisi penuh)
+    const spins = 6 * 360;
+    coin.style.setProperty("--coin-final-turn", v === "G" ? `${spins + 180}deg` : `${spins}deg`);
     coin.style.setProperty("--coin-face-angle", v === "G" ? "180deg" : "0deg");
     row.append(coin);
   });
-  const label = arena.querySelector("[data-coin-result]"), reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  arena.classList.add("is-tossing", "is-charging"); label.textContent = "Koin sedang dilempar…"; playCoinPhase("coinCharge");
+  const label = arena.querySelector("[data-coin-result]");
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const later = (ms, fn) => window.setTimeout(() => { if (arena.isConnected) fn(); }, reduced ? Math.min(ms, 120) : ms);
-  later(220, () => { arena.classList.remove("is-charging"); arena.classList.add("is-launched"); arena.querySelector(".hand-rig")?.classList.add("is-flicking"); playCoinPhase("coinLaunch"); });
-  later(620, () => { arena.classList.add("is-apex"); playCoinPhase("coinApex"); if (!reduced) burst(arena.querySelector("canvas"), 16, .25); });
-  later(1200, () => { arena.classList.add("is-impact"); playCoinPhase("coinImpact"); if (!reduced) burst(arena.querySelector("canvas"), 32, .7); });
-  later(1520, () => { arena.classList.remove("is-tossing", "is-launched", "is-apex", "is-impact", "is-charging"); arena.querySelector(".hand-rig")?.classList.remove("is-flicking"); label.textContent = `Hasil: ${outcomes.map(v => v === "A" ? "Angka (A)" : "Gambar (G)").join(" • ")}`; });
+
+  arena.classList.add("is-tossing", "is-charging");
+  arena.classList.remove("blencong-glow");
+  label.textContent = "Koin sedang dilempar…";
+  playCoinPhase("coinCharge");
+
+  later(220, () => {
+    arena.classList.remove("is-charging");
+    arena.classList.add("is-launched", "blencong-glow");
+    arena.querySelector(".hand-rig")?.classList.add("is-flicking");
+    playCoinPhase("coinLaunch");
+    if (!reduced) burst(arena.querySelector("canvas"), 10, 0.28);
+  });
+  later(620, () => {
+    arena.classList.add("is-apex");
+    playCoinPhase("coinApex");
+    if (!reduced) burst(arena.querySelector("canvas"), 20, 0.22);
+  });
+  later(1200, () => {
+    arena.classList.add("is-impact");
+    playCoinPhase("coinImpact");
+    if (!reduced) burst(arena.querySelector("canvas"), 36, 0.72);
+  });
+  later(1520, () => {
+    arena.classList.remove("is-tossing", "is-launched", "is-apex", "is-impact", "is-charging", "blencong-glow");
+    arena.querySelector(".hand-rig")?.classList.remove("is-flicking");
+    label.textContent = `Hasil: ${outcomes.map(v => v === "A" ? "Angka (A)" : "Gambar (G)").join(" • ")}`;
+  });
   return true;
 }
 

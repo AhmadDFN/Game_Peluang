@@ -4,22 +4,21 @@ Checklist ini menjaga urutan kerja dan mencegah context drift. Jangan melompati 
 
 ## Fase 1 — Fondasi, Tema Dark-Gold & Navigasi Layar
 
-- [ ] Tetapkan konstanta identitas proyek di `js/core/constants.js`.
-- [ ] Siapkan HTML shell dengan seluruh container layar yang dibutuhkan.
-- [ ] Implementasikan variabel tema di `css/theme.css`.
-- [ ] Implementasikan reset, layout responsif, komponen tombol/kartu/modal.
-- [ ] Pastikan logo UNIPMA dirujuk dari `./assets/images/logo-unipma.webp`.
-- [ ] Buat alur Splash: logo UNIPMA 2 detik → placeholder logo game 2 detik.
-- [ ] Tambahkan tombol `Lewati` pada splash.
-- [ ] Implementasikan navigasi Menu Utama.
-- [ ] Implementasikan Buku Rumus Koin dan Kredit sebagai layar informasi.
-- [ ] Implementasikan Pilih Mode: Solo vs AI dan 1v1 Pass & Play.
-- [ ] Implementasikan pilihan kesulitan AI: Mudah, Normal, Sulit.
-- [ ] Implementasikan Pilih Level dengan Level 1 aktif.
-- [ ] Tampilkan Level 2 dan 3 sebagai kartu terkunci berlabel `Coming Soon`.
-- [ ] Pastikan kartu Level 2 dan 3 tidak memiliki handler gameplay.
-- [ ] Siapkan `GameState` dan transisi layar dasar.
-- [ ] Uji navigasi keyboard, fokus, responsivitas, dan tombol kembali.
+- [x] Tetapkan konstanta identitas proyek di `js/core/constants.js`.
+- [x] Siapkan HTML shell dengan seluruh container layar yang dibutuhkan.
+- [x] Implementasikan variabel tema di `css/theme.css`.
+- [x] Implementasikan reset, layout responsif, komponen tombol/kartu/modal.
+- [x] Pastikan logo UNIPMA dirujuk dari `./assets/images/logo-unipma.webp` (atau versi transparan bersih `./assets/images/logo-unipma-clean.png`).
+- [x] Buat alur Splash sinematik: logo UNIPMA 2 detik → placeholder logo game 2 detik (total 4 detik penuh tanpa lewati).
+- [x] Implementasikan navigasi Menu Utama.
+- [x] Implementasikan Buku Rumus Koin dan Kredit sebagai layar informasi.
+- [x] Implementasikan Pilih Mode: Solo vs AI dan 1v1 Pass & Play.
+- [x] Implementasikan pilihan kesulitan AI: Mudah, Normal, Sulit.
+- [x] Implementasikan Pilih Level dengan Level 1 aktif.
+- [x] Tampilkan Level 2 dan 3 sebagai kartu terkunci berlabel `Coming Soon`.
+- [x] Pastikan kartu Level 2 dan 3 tidak memiliki handler gameplay.
+- [x] Siapkan `GameState` dan transisi layar dasar.
+- [x] Uji navigasi keyboard, fokus, responsivitas, dan tombol kembali.
 
 ## Fase 2 — Engine Matematika Koin & Logika AI
 
