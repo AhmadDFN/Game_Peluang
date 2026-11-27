@@ -17,24 +17,8 @@
 .button:active { transform: translateY(-1px) scale(0.98); }
 .button-primary { border-bottom: 5px solid var(--coin-gold-deep); box-shadow: 0 5px 0 #59400b, 0 10px 20px rgba(0,0,0,.35); }
 .button-primary:active { transform: translateY(3px); box-shadow: 0 1px 0 #59400b; }
-.coin-arena { isolation: isolate; }
-.coin-arena::after { content: ""; position: absolute; left: 35%; right: 35%; bottom: 12%; height: 2rem; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(8px); z-index: -1; }
-.coin-arena.is-tossing::after { animation: shadow-toss 1.7s ease both; }
 .coin-arena.is-tossing .arena-floor { animation: table-impact 1.7s ease both; }
 .coin-arena.is-tossing .arena-label { animation: spark-flash 1.7s ease both; }
-.coin-gate-shell { position: relative; display: grid; justify-items: center; gap: clamp(.45rem, 1.2vh, .8rem); max-height: 100%; }
-.coin-gate-shell > .screen-back { position: absolute; top: 0; left: 0; z-index: 4; }
-.coin-gate-shell > .eyebrow { margin: 0; }
-.coin-gate-shell > .title { margin: 0; font-size: clamp(1.5rem, 3.2vh, 2.4rem); }
-.coin-gate-shell > .subtitle { display: none; }
-.coin-gate-shell .arena-status { width: min(100%, 32rem); }
-.coin-gate-shell .two-column { display: block; width: min(100%, 38rem); }
-.coin-arena { min-height: clamp(22rem, 58vh, 34rem); }
-.arena-controls-float { position: absolute; z-index: 5; bottom: clamp(.75rem, 3vh, 1.4rem); left: 50%; display: flex; width: min(calc(100% - 2rem), 30rem); justify-content: center; gap: .65rem; padding: .65rem; transform: translateX(-50%); border: 1px solid var(--color-border); border-radius: var(--radius-pill); background: rgba(11, 15, 25, .88); box-shadow: 0 0.8rem 2rem rgba(0,0,0,.4), 0 0 1.3rem rgba(212,175,55,.12); backdrop-filter: blur(14px); }
-.arena-controls-float .button { min-height: 2.75rem; }
-.arena-controls-float .button-primary { flex: 1; }
-.arena-hint-note { position: absolute; z-index: 6; right: 1rem; bottom: 5rem; left: 1rem; margin: 0 auto; width: fit-content; max-width: 32rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: .75rem 1rem; background: rgba(11,15,25,.94); color: var(--color-text); box-shadow: var(--shadow-card); font-size: var(--font-size-sm); }
-.coin-gate-shell .card.stack { display: none; }
 .button-primary { background: var(--gradient-gold); color: var(--color-bg); background-size: 180% 100%; }
 .button-primary:hover { background-position: 100% 0; }
 .button-secondary { border-color: var(--color-border); background: var(--color-surface); color: var(--color-text); }
@@ -442,33 +426,36 @@
 
 .arena-label {
   position: absolute;
-  top: 0.75rem;
+  top: 0.65rem;
   left: 0.85rem;
   color: var(--color-text-muted);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   z-index: 20;
+  pointer-events: none;
+  opacity: 0.8;
 }
 
 .coin-result-badge {
   position: absolute;
-  top: 0.75rem;
+  top: clamp(1.9rem, 5vh, 2.3rem);
   left: 50%;
   transform: translateX(-50%);
   width: max-content;
   max-width: 90%;
   margin: 0;
-  padding: 0.35rem 0.85rem;
+  padding: 0.35rem 0.95rem;
   border-radius: var(--radius-pill);
-  background: rgba(11, 15, 25, 0.88);
-  border: 1px solid var(--color-gold);
+  background: rgba(11, 15, 25, 0.92);
+  border: 1.5px solid var(--color-gold);
   color: var(--color-gold-bright);
   font-size: var(--font-size-xs);
   font-weight: 800;
   letter-spacing: 0.05em;
   z-index: 20;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+  pointer-events: none;
 }
 
 .arena-hint-note {

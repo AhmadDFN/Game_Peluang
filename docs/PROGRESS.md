@@ -85,6 +85,8 @@
 
 ## 2026-11-27 — Audit & Perbaikan Layout Responsif 100dvh & DOM Level 1 Gerbang Koin
 
+- **Penyelarasan Vertikal Badge Hasil**: Memisahkan posisi vertikal antara label judul arena (`.arena-label`, `top: 0.65rem; left: 0.85rem`) dan badge status lemparan koin (`.coin-result-badge`, `top: clamp(1.9rem, 5vh, 2.3rem)`), memberikan jarak bebas yang lega dari tepi atas dan menghilangkan tumpang-tindih teks.
+- **Pembersihan CSS Duplikat**: Menghapus blok CSS usang di `components.css` yang berpotensi menimpa flexbox shell dan posisi kontrol arena.
 - **Sinkronisasi DOM & Error JS**: Menyediakan `js/app.js` sebagai re-export jembatan, mengekspor helper `playSlendroSfx` di `audioEngine.js`, mengganti ikon tombol mute/unmute dengan inline SVG anti-karakter rusak, dan menjaga selektor `.hand-rig, .dalang-hand` serta `.coin-shadow` bebas dari referensi null saat re-render.
 - **Kunci Layout 100dvh Tanpa Overflow**: Menstandarkan `#coin-gate` dan shell-nya ke flexbox `100dvh` bebas scroll vertikal tak terduga di desktop maupun mobile (`360x800`, `390x844`).
 - **Header & HUD Kompak**: Mengunci tinggi baris atas <= `120px` dengan tombol kembali, judul, dan 3 kartu status ronde/skor/giliran.
