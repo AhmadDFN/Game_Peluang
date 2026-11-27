@@ -6,7 +6,7 @@ const button = (label, action, className = "button-secondary") =>
 const header = (eyebrow, title, description) =>
   `<p class="eyebrow">${eyebrow}</p><h1 class="title">${title}</h1><p class="subtitle">${description}</p>`;
 const backButton = () =>
-  `<button class="floating-icon screen-back" type="button" data-action="go-back" aria-label="Kembali"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7M8 12h11"/></svg></button>`;
+  `<button class="btn-icon btn-back screen-back" type="button" data-action="go-back" aria-label="Kembali"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>`;
 const probifyLogo = () =>
   `<svg class="probify-emblem" viewBox="0 0 160 160" role="img" aria-label="Emblem Probify"><defs><linearGradient id="menu-gold" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#F5D061"/><stop offset="1" stop-color="#D4AF37"/></linearGradient></defs><circle cx="80" cy="80" r="67" fill="#131A2A" stroke="url(#menu-gold)" stroke-width="5"/><circle cx="80" cy="80" r="51" fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="3 8"/><path d="M48 94c15-26 30-39 48-39 10 0 18 3 26 9" fill="none" stroke="#F5D061" stroke-linecap="round" stroke-width="6"/><path d="M111 62l11 2-7 9" fill="none" stroke="#F5D061" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/><text x="80" y="106" fill="#F8FAFC" font-family="Georgia, serif" font-size="38" font-weight="700" text-anchor="middle">P</text></svg>`;
 
@@ -162,13 +162,20 @@ const renderCoinGate = (state) => {
   return `<div class="coin-gate-shell">
   <header class="coin-gate-header">
     <div class="header-topline">
-      <button class="floating-icon screen-back" type="button" data-action="go-back" aria-label="Kembali">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7M8 12h11"/></svg>
+      <button type="button" class="btn-icon btn-back" data-action="go-back" aria-label="Kembali" id="btn-back-coin">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
       </button>
       <div class="header-titles">
         <p class="eyebrow">Level 1 • Arena Koin</p>
         <h1 class="title">Gerbang Koin</h1>
       </div>
+      <button type="button" class="btn-icon btn-hint" data-action="show-preview-hint" aria-label="Bantuan Ruang Sampel" title="Hint">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/>
+        </svg>
+      </button>
     </div>
     <div class="arena-status">
       <div class="status-chip"><strong>1 / 5</strong><span>Ronde</span></div>
@@ -208,7 +215,6 @@ const renderCoinGate = (state) => {
 
     <div class="arena-controls-float">
       ${button("Lempar Koin", "preview-coin", "button-primary")}
-      ${button("Hint", "show-preview-hint")}
       ${button(muteIcon, "toggle-mute", "button-secondary")}
     </div>
   </div>
