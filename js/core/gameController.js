@@ -5,6 +5,7 @@ import { getState, resetSession, updateState } from "./gameState.js";
 import { initInputHandlers } from "../ui/inputHandlers.js";
 import { initRenderers } from "../ui/renderers.js";
 import { initScreenManager } from "../ui/screenManager.js";
+import { triggerCoinToss } from "../ui/coinAnimation.js";
 
 const history = [];
 const goTo = (screen, direction = "forward") => {
@@ -21,14 +22,8 @@ const goBack = () => {
 const setSession = (patch) => updateState((state) => ({ ...state, session: { ...state.session, ...patch } }));
 
 const previewCoinToss = () => {
-  const arena = document.querySelector("[data-coin-arena]");
-  if (!arena || arena.classList.contains("is-tossing")) return;
-  const result = Math.random() < 0.5 ? "a" : "g";
-  arena.classList.remove("is-tossing", "result-a", "result-g");
-  void arena.offsetWidth;
-  arena.classList.add(`result-${result}`, "is-tossing");
-  playCoinToss();
-  window.setTimeout(() => arena.classList.remove("is-tossing"), 1750);
+  // Preview sementara; gameplay nanti memasok hasil dari mathEngine.
+  triggerCoinToss(Math.random() < 0.5 ? "A" : "G");
 };
 
 const handleAction = (action) => {

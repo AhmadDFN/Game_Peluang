@@ -1,5 +1,11 @@
 # Probify — Catatan Progres
 
+## Komponen lempar koin 3D
+
+- Mengadaptasi ilustrasi tangan dengan jempol bergerak, lintasan koin, bayangan, serta label hasil.
+- `js/ui/coinAnimation.js` menyediakan `triggerCoinToss(outcome)` untuk 1–3 simbol A/G; hasil disediakan pemanggil dan tidak dihitung oleh UI.
+- Tombol yang tersedia saat ini masih preview acak satu koin; engine matematika dan alur ronde belum dipasang.
+
 ## Perbaikan sisi Gambar
 
 - Memisahkan posisi sisi depan dan belakang pada sumbu kedalaman agar tepi koin tidak menutupi ilustrasi Gambar saat hasilnya G.

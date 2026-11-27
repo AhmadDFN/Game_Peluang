@@ -107,3 +107,9 @@
 .coin-arena.result-a { --coin-final-turn: 720deg; }
 .coin-arena.is-tossing .coin-3d { animation-name: coin-spin-result; }
 @media (max-width: 380px) { .arena-controls-float { width: calc(100% - 1rem); gap: .3rem; padding: .4rem; } .arena-controls-float .button { font-size: .8rem; padding-inline: .4rem; } }
+.coin-row { position: absolute; top: 30%; left: 50%; transform: translateX(-50%); width: min(92%, 25rem); display: flex; justify-content: center; gap: clamp(.3rem, 2vw, 1rem); perspective: 900px; }
+.coin-row .coin-stage { position: relative; inset: auto; flex: 0 1 7.5rem; width: min(25vw, 7.5rem); height: auto; aspect-ratio: 1; transform: none; }
+.coin-arena.is-tossing .coin-row .coin-stage { animation: toss-row 1.7s ease both; }
+.coin-result-badge { position: absolute; top: 2.5rem; left: 50%; transform: translateX(-50%); width: max-content; max-width: 90%; margin: 0; padding: .4rem .7rem; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-gold-bright); font-size: var(--font-size-sm); z-index: 4; }
+.toss-hand .thumb-group { transform-origin: 68px 52px; }
+.coin-arena.is-tossing .thumb-group { animation: thumb-snap .55s ease both; }
