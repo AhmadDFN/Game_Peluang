@@ -1,5 +1,10 @@
 # Probify — Catatan Progres
 
+## Tata letak arena responsif
+
+- Menempatkan tombol kembali, judul, dan status ronde di bagian atas layar.
+- Membuat panggung koin mengisi sisa ruang dengan batas tinggi responsif; layar sangat pendek tetap dapat digulir agar kontrol dapat dijangkau.
+
 ## Perbaikan tampilan Royal Mint
 
 - Memperbaiki format referensi gradasi SVG yang menyebabkan modul renderer gagal dimuat.

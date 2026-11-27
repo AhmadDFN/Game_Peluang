@@ -144,3 +144,14 @@
 .coin-result-badge { position: absolute; top: 2.5rem; left: 50%; transform: translateX(-50%); width: max-content; max-width: 90%; margin: 0; padding: .4rem .7rem; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-gold-bright); font-size: var(--font-size-sm); z-index: 4; }
 .toss-hand .thumb-group { transform-origin: 68px 52px; }
 .coin-arena.is-tossing .thumb-group { animation: thumb-snap .55s ease both; }
+
+/* Header arena berada di atas stage; area permainan memakai sisa tinggi layar. */
+#coin-gate { align-items: start; padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left)); }
+#coin-gate > .page-content { height: 100%; max-width: 38rem; margin: 0 auto; overflow-y: auto; }
+#coin-gate .coin-gate-shell { height: 100%; min-height: 0; max-height: none; align-content: start; grid-template-rows: auto auto auto minmax(0, 1fr); gap: clamp(.5rem, 1.5dvh, .9rem); padding-top: clamp(.4rem, 1.5dvh, 1rem); }
+#coin-gate .coin-gate-shell > .screen-back { top: 0; left: 0; }
+#coin-gate .coin-gate-shell > .eyebrow, #coin-gate .coin-gate-shell > .title { max-width: calc(100% - 7rem); }
+#coin-gate .arena-status { width: 100%; }
+#coin-gate .coin-gate-shell .two-column { height: 100%; min-height: 0; width: 100%; }
+#coin-gate .coin-arena { height: 100%; min-height: 18rem; }
+@media (max-height: 620px) { #coin-gate .coin-gate-shell { min-height: 34rem; } }
