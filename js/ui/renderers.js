@@ -11,7 +11,7 @@ const probifyLogo = () =>
   `<svg class="probify-emblem" viewBox="0 0 160 160" role="img" aria-label="Emblem Probify"><defs><linearGradient id="menu-gold" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#F5D061"/><stop offset="1" stop-color="#D4AF37"/></linearGradient></defs><circle cx="80" cy="80" r="67" fill="#131A2A" stroke="url(#menu-gold)" stroke-width="5"/><circle cx="80" cy="80" r="51" fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="3 8"/><path d="M48 94c15-26 30-39 48-39 10 0 18 3 26 9" fill="none" stroke="#F5D061" stroke-linecap="round" stroke-width="6"/><path d="M111 62l11 2-7 9" fill="none" stroke="#F5D061" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"/><text x="80" y="106" fill="#F8FAFC" font-family="Georgia, serif" font-size="38" font-weight="700" text-anchor="middle">P</text></svg>`;
 
 // ─── SVG Tangan Sang Dalang (Beskap Hitam + Batik Parang Emas) ───────────────
-const handIllustration = () => `<svg class="hand-rig" aria-hidden="true" viewBox="0 0 260 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+const handIllustration = () => `<svg class="hand-rig dalang-hand" aria-hidden="true" viewBox="0 0 260 240" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="skinDalang" x1="80" y1="60" x2="185" y2="170" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#F7C9A9"/><stop offset="55%" stop-color="#DDA07B"/><stop offset="100%" stop-color="#A86B49"/>
@@ -176,36 +176,66 @@ const renderFormulaBook = () => `<div>${backButton()}<div class="two-column"><di
 
 const renderCredits = () => `<div>${backButton()}<div class="hero-grid"><div>${header("Tentang Probify", "Dibuat untuk belajar.", "Sebuah proyek individu untuk menghadirkan teori peluang SMA dalam pengalaman interaktif.")}</div><div class="card stack"><p><strong>Institusi</strong><br />${CAMPUS_NAME}</p><p><strong>Pengembang</strong><br />${AUTHOR_TEXT}</p><p><strong>Teknologi</strong><br />HTML5, CSS3, dan Vanilla JavaScript ES6 Modules.</p></div></div></div>`;
 
-const renderCoinGate = (state) => `<div class="coin-gate-shell">${backButton()}<p class="eyebrow">Level 1 • Arena Koin</p><h1 class="title">Gerbang Koin</h1><div class="arena-status"><div class="status-chip"><strong>1 / 5</strong>Ronde</div><div class="status-chip"><strong>0</strong>Skor</div><div class="status-chip"><strong>•</strong>Giliran</div></div><div class="two-column"><div class="coin-arena" data-coin-arena>
-  ${gununganBackdrop()}
-  <canvas class="fx-canvas" aria-hidden="true"></canvas>
-  <div class="apex-flash"></div>
-  <div class="shockwave-ring"></div>
-  <div class="pedestal"></div>
-  <span class="arena-label">Arena Lempar Koin</span>
-  <p class="coin-result-badge" data-coin-result aria-live="polite">Siap dilempar</p>
-  <div class="coin-row" data-coin-row>
-    <div class="coin-stage">
-      <div class="coin-3d coin-body" data-coin>
-        <div class="coin-layer layer-1"></div>
-        <div class="coin-layer layer-2"></div>
-        <div class="coin-layer layer-3"></div>
-        <div class="coin-layer layer-4"></div>
-        <div class="coin-layer layer-5"></div>
-        <div class="coin-face coin-front">${coinSideSvg("front")}<span class="coin-glare"></span></div>
-        <div class="coin-face coin-back">${coinSideSvg("back")}<span class="coin-glare"></span></div>
-        <div class="coin-edge"></div>
+const renderCoinGate = (state) => {
+  const muteIcon = state.app.isMuted
+    ? `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>`
+    : `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`;
+
+  return `<div class="coin-gate-shell">
+  <header class="coin-gate-header">
+    <div class="header-topline">
+      <button class="floating-icon screen-back" type="button" data-action="go-back" aria-label="Kembali">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7M8 12h11"/></svg>
+      </button>
+      <div class="header-titles">
+        <p class="eyebrow">Level 1 • Arena Koin</p>
+        <h1 class="title">Gerbang Koin</h1>
       </div>
     </div>
+    <div class="arena-status">
+      <div class="status-chip"><strong>1 / 5</strong><span>Ronde</span></div>
+      <div class="status-chip"><strong>0</strong><span>Skor</span></div>
+      <div class="status-chip"><strong>•</strong><span>Giliran</span></div>
+    </div>
+  </header>
+
+  <div class="coin-arena kelir-stage" data-coin-arena>
+    ${gununganBackdrop()}
+    <canvas class="fx-canvas" aria-hidden="true"></canvas>
+    <div class="apex-flash"></div>
+    <div class="shockwave-ring"></div>
+    <span class="arena-label">Arena Lempar Koin</span>
+    <p class="coin-result-badge" data-coin-result aria-live="polite">Siap dilempar</p>
+
+    <div class="pedestal"></div>
+    <div class="coin-shadow"></div>
+
+    <div class="coin-row" data-coin-row>
+      <div class="coin-stage">
+        <div class="coin-3d coin-body" data-coin>
+          <div class="coin-layer layer-1"></div>
+          <div class="coin-layer layer-2"></div>
+          <div class="coin-layer layer-3"></div>
+          <div class="coin-layer layer-4"></div>
+          <div class="coin-layer layer-5"></div>
+          <div class="coin-face coin-front">${coinSideSvg("front")}<span class="coin-glare"></span></div>
+          <div class="coin-face coin-back">${coinSideSvg("back")}<span class="coin-glare"></span></div>
+          <div class="coin-edge"></div>
+        </div>
+      </div>
+    </div>
+
+    ${handIllustration()}
+    <div class="arena-floor"></div>
+
+    <div class="arena-controls-float">
+      ${button("Lempar Koin", "preview-coin", "button-primary")}
+      ${button("Hint", "show-preview-hint")}
+      ${button(muteIcon, "toggle-mute", "button-secondary")}
+    </div>
   </div>
-  ${handIllustration()}
-  <div class="arena-floor"></div>
-  <div class="arena-controls-float">
-    ${button("Lempar Koin", "preview-coin", "button-primary")}
-    ${button("Hint", "show-preview-hint")}
-    ${button(state.app.isMuted ? "🔇" : "♫", "toggle-mute", "button-secondary")}
-  </div>
-</div></div></div>`;
+</div>`;
+};
 
 export const renderAll = (state) => {
   const views = {

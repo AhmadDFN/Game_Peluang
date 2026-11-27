@@ -110,3 +110,8 @@ const playMetalPing = () => {
   oscillator.start(now);
   oscillator.stop(now + 0.46);
 };
+
+export function playSlendroSfx(stage) {
+  const map = { launch: "coinLaunch", apex: "coinApex", impact: "coinImpact", charge: "coinCharge" };
+  playCoinPhase(map[stage] || stage);
+}

@@ -63,7 +63,10 @@ export function animateCoinToss(outcomes) {
   later(220, () => {
     arena.classList.remove("is-charging");
     arena.classList.add("is-launched", "blencong-glow");
-    arena.querySelector(".hand-rig")?.classList.add("is-flicking");
+    const hand = arena.querySelector(".hand-rig, .dalang-hand");
+    if (hand) hand.classList.add("is-flicking");
+    const shadow = arena.querySelector(".coin-shadow");
+    if (shadow) shadow.classList.add("airborne");
     playCoinPhase("coinLaunch");
     if (!reduced) burst(arena.querySelector("canvas"), 10, 0.28);
   });
@@ -79,8 +82,13 @@ export function animateCoinToss(outcomes) {
   });
   later(1520, () => {
     arena.classList.remove("is-tossing", "is-launched", "is-apex", "is-impact", "is-charging", "blencong-glow");
-    arena.querySelector(".hand-rig")?.classList.remove("is-flicking");
-    label.textContent = `Hasil: ${outcomes.map(v => v === "A" ? "Angka (A)" : "Gambar (G)").join(" • ")}`;
+    const hand = arena.querySelector(".hand-rig, .dalang-hand");
+    if (hand) hand.classList.remove("is-flicking");
+    const shadow = arena.querySelector(".coin-shadow");
+    if (shadow) shadow.classList.remove("airborne");
+    if (label) {
+      label.textContent = `Hasil: ${outcomes.map(v => v === "A" ? "Angka (A)" : "Gambar (G)").join(" • ")}`;
+    }
   });
   return true;
 }

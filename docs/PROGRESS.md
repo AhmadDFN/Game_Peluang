@@ -83,6 +83,17 @@
 - Memperbarui dokumentasi `CONCEPT_GDD.md` dan menandai checklist `Fase 1` di `TODO.md` sebagai tuntas (100% sempurna).
 - Mempertahankan batasan ketat: tidak menyentuh kode Fase 2 dan Fase 3.
 
+## 2026-11-27 — Audit & Perbaikan Layout Responsif 100dvh & DOM Level 1 Gerbang Koin
+
+- **Sinkronisasi DOM & Error JS**: Menyediakan `js/app.js` sebagai re-export jembatan, mengekspor helper `playSlendroSfx` di `audioEngine.js`, mengganti ikon tombol mute/unmute dengan inline SVG anti-karakter rusak, dan menjaga selektor `.hand-rig, .dalang-hand` serta `.coin-shadow` bebas dari referensi null saat re-render.
+- **Kunci Layout 100dvh Tanpa Overflow**: Menstandarkan `#coin-gate` dan shell-nya ke flexbox `100dvh` bebas scroll vertikal tak terduga di desktop maupun mobile (`360x800`, `390x844`).
+- **Header & HUD Kompak**: Mengunci tinggi baris atas <= `120px` dengan tombol kembali, judul, dan 3 kartu status ronde/skor/giliran.
+- **Panggung Kelir Presisi**:
+  1. Siluet Gunungan diperbesar (`clamp(220px, 45%, 320px)`) dan diposisikan pas di tengah (`translate(-50%, -52%)`) sebagai bingkai cahaya blencong.
+  2. Koin 3D duduk tepat di atas landasan elips (`.pedestal`) dan bayangannya (`.coin-shadow`).
+  3. Tangan Dalang dijangkar di `bottom: 68px` dengan z-index di bawah bar tombol sehingga tidak menutupi kontrol.
+  4. Bar tombol bawah (`Lempar Koin`, `Hint`, `Audio`) tertata rapi di bagian bawah kartu arena.
+
 ## 2026-11-27 — Integrasi Identitas Neo-Wayang (Level 1: Gerbang Koin)
 
 - Mengintegrasikan estetika budaya Nusantara **Neo-Wayang (Dark & Gold)** ke dalam arena Level 1 (`coin-gate`).

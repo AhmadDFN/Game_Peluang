@@ -56,107 +56,454 @@
 .formula-list li { border-left: 3px solid var(--color-gold); padding: var(--space-3) var(--space-4); background: var(--color-surface); }
 .formula { color: var(--color-gold-bright); font-family: var(--font-display); font-size: var(--font-size-lg); }
 .muted { color: var(--color-text-muted); }
-/* Neo-Wayang: Siluet Gunungan Blencong */
-.gunungan-backdrop { position: absolute; top: 5%; left: 50%; width: min(68%, 240px); height: auto; transform: translateX(-50%); opacity: 0.18; pointer-events: none; z-index: 1; filter: drop-shadow(0 0 24px rgba(255, 230, 128, 0.42)); transition: opacity 0.4s ease, transform 0.4s ease; }
-.coin-arena.blencong-glow .gunungan-backdrop { opacity: 0.36; transform: translateX(-50%) scale(1.04); }
-@media (prefers-reduced-motion: reduce) { .gunungan-backdrop { transition: none; } }
+/* ─── Neo-Wayang: Arena Level 1 Gerbang Koin (100dvh Lock & Layering) ─────── */
+#coin-gate {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: max(0.6rem, env(safe-area-inset-top)) max(0.75rem, env(safe-area-inset-right)) max(0.6rem, env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
+  box-sizing: border-box;
+}
 
-.coin-arena { position: relative; display: flex; min-height: 32rem; width: 100%; align-items: center; justify-content: center; overflow: hidden; border: 1px solid rgba(245, 208, 97, 0.35); border-radius: var(--radius-lg); background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.2), transparent 30%), linear-gradient(160deg, rgba(19, 26, 42, 0.86), rgba(7, 10, 18, 0.94)); box-shadow: inset 0 0 4rem rgba(212, 175, 55, 0.08), var(--shadow-card); perspective: 900px; }
-.coin-arena::before { content: ""; position: absolute; inset: 16% 12% 12%; border: 1px solid rgba(245, 208, 97, 0.14); border-radius: 50%; transform: rotateX(67deg); box-shadow: 0 0 3rem rgba(212, 175, 55, 0.13); }
-.arena-label { position: absolute; top: var(--space-4); left: var(--space-5); color: var(--color-text-muted); font-size: var(--font-size-xs); letter-spacing: 0.16em; text-transform: uppercase; }
-.coin-stage { position: absolute; top: 25%; left: 50%; width: 7.5rem; height: 7.5rem; transform: translateX(-50%); transform-style: preserve-3d; }
-.coin-3d { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(-12deg) rotateY(-18deg); }
-.coin-face { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden; border: 0.5rem solid var(--coin-gold-deep); border-radius: 50%; background: radial-gradient(circle at 35% 28%, var(--coin-gold-light) 0%, var(--coin-gold-mid) 22%, var(--color-gold) 58%, var(--coin-gold-deep) 100%); box-shadow: inset 0 0 0 2px var(--coin-gold-light), inset 0 0 0 7px #b88b24, 0 1rem 2rem rgba(0,0,0,0.3); backface-visibility: hidden; }
-.coin-face::before { content: ""; position: absolute; inset: 0; z-index: 2; transform: translateX(-130%) skewX(-18deg); background: linear-gradient(100deg, transparent 30%, rgba(255, 243, 179, 0.72), transparent 70%); animation: coin-specular 3.8s ease-in-out infinite; }
-.coin-face svg { position: relative; z-index: 1; width: 100%; height: 100%; }
-.coin-front { transform: translateZ(0.23rem); }
-.coin-back { transform: rotateY(180deg) translateZ(0.23rem); }
-.coin-edge { position: absolute; inset: 0; transform: translateZ(0); border: 0.5rem solid #8c6715; border-radius: 50%; background: repeating-linear-gradient(0deg, #c3972f 0 3px, #70500f 3px 5px); }
-.coin-arena.is-tossing .coin-stage { animation: coin-toss 1.7s cubic-bezier(0.18, 0.75, 0.26, 1) both; }
-.coin-arena.is-tossing .coin-3d { animation: coin-spin 1.7s cubic-bezier(0.15, 0.7, 0.25, 1) both; }
-.coin-arena.result-a .coin-3d { transform: rotateX(0deg) rotateY(0deg); }
-.coin-arena.result-g .coin-3d { transform: rotateX(0deg) rotateY(180deg); }
-.toss-hand { position: absolute; bottom: -0.5rem; left: 50%; width: min(14rem, 42%); transform: translateX(-50%); transform-origin: 50% 100%; filter: drop-shadow(0 0 1rem rgba(212, 175, 55, 0.15)); }
-.coin-arena.is-tossing .toss-hand { animation: hand-flick 1.7s ease both; }
-.coin-arena:not(.is-tossing) .toss-hand { animation: hand-idle 4.2s ease-in-out infinite; }
-.arena-floor { position: absolute; right: 11%; bottom: 8%; left: 11%; height: 2rem; border: 1px solid rgba(245, 208, 97, 0.3); border-radius: 50%; background: rgba(212, 175, 55, 0.12); box-shadow: 0 0 2rem rgba(212, 175, 55, 0.15); }
-.arena-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); }
-.arena-status { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); text-align: center; }
-.status-chip { border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-2); background: rgba(19, 26, 42, 0.6); color: var(--color-text-muted); font-size: var(--font-size-sm); }
-.status-chip strong { display: block; color: var(--color-gold-bright); font-size: var(--font-size-lg); }
-.modal-root { position: fixed; inset: 0; z-index: var(--z-modal); pointer-events: none; }
-.modal-root.is-open { pointer-events: auto; }
-.modal-backdrop { display: grid; min-height: 100%; place-items: center; padding: var(--space-4); background: rgba(4, 7, 13, 0.82); }
-.modal-card { width: min(100%, 32rem); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5); background: var(--color-surface); box-shadow: var(--shadow-card); }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-.floating-icon { display: inline-grid; place-items: center; width: 46px; height: 46px; padding: 0; border: 1px solid var(--color-gold); border-radius: 50%; background: var(--color-surface); color: var(--color-gold-bright); box-shadow: var(--shadow-card); font-family: var(--font-display); font-size: 1.3rem; font-weight: bold; cursor: pointer; }
-.floating-icon svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.screen .screen-back, .screen .level-info-button, .screen .mode-select-content > .screen-back, .screen .coin-gate-shell > .screen-back { position: absolute; top: max(1rem, env(safe-area-inset-top)); z-index: var(--z-header); }
-.screen .screen-back, .screen .mode-select-content > .screen-back, .screen .coin-gate-shell > .screen-back { left: max(1rem, env(safe-area-inset-left)); }
-.screen .level-info-button { right: max(1rem, env(safe-area-inset-right)); }
-.level-info-dialog { width: min(90vw, 28rem); max-height: 85dvh; padding: 0; border: 1px solid var(--color-gold); border-radius: var(--radius-lg); background: var(--color-surface); color: var(--color-text); box-shadow: var(--shadow-gold), var(--shadow-card); }
-.level-info-dialog::backdrop { background: rgba(3, 6, 12, .8); backdrop-filter: blur(4px); }
-.level-info-content { position: relative; padding: 2.5rem 1.5rem 1.5rem; text-align: center; }
-.level-info-content p:not(.eyebrow) { color: var(--color-text-muted); }
-.dialog-close { position: absolute; top: .65rem; right: .65rem; }
-@media (max-width: 720px) { .splash-skip-corner { top: var(--space-3); right: var(--space-3); } .coin-arena { min-height: clamp(20rem, 56vh, 28rem); } .coin-stage { top: 20%; transform: translateX(-50%) scale(.78); } .toss-hand { bottom: 2.2rem; width: min(10rem, 43%); } .arena-status { grid-template-columns: repeat(3, 1fr); } .arena-controls-float { bottom: .65rem; width: calc(100% - 1.25rem); gap: .4rem; padding: .45rem; } .arena-controls-float .button { padding: .65rem .75rem; font-size: var(--font-size-sm); } .coin-gate-shell > .screen-back { top: -.2rem; left: -.3rem; min-height: 2.5rem; } }
+#coin-gate > .page-content {
+  height: 100%;
+  max-height: 100%;
+  max-width: min(100%, 480px);
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-/* Panel arena: tiap tombol memiliki kolom dan batasnya sendiri. */
-.arena-controls-float { display: grid; grid-template-columns: minmax(0, 1fr) auto 44px; align-items: center; width: min(calc(100% - 2rem), 28rem); padding: .5rem; gap: .5rem; border-radius: 1rem; }
-.arena-controls-float .button { min-width: 0; min-height: 44px; padding: .5rem .7rem; margin: 0; white-space: nowrap; box-shadow: none; }
-.arena-controls-float .button-primary { border-bottom: 3px solid var(--coin-gold-deep); }
-.arena-controls-float .button:last-child { width: 44px; padding: 0; }
-.coin-arena { min-height: clamp(20rem, 58dvh, 32rem); }
-.toss-hand { bottom: 4rem; }
-.coin-arena.result-g { --coin-final-turn: 900deg; }
-.coin-arena.result-a { --coin-final-turn: 720deg; }
-.coin-arena.is-tossing .coin-3d { animation-name: coin-spin-result; }
-@media (max-width: 380px) { .arena-controls-float { width: calc(100% - 1rem); gap: .3rem; padding: .4rem; } .arena-controls-float .button { font-size: .8rem; padding-inline: .4rem; } }
-.coin-layer { position: absolute; inset: 0; border-radius: 50%; background: var(--coin-gold-deep); }
-.layer-1 { transform: translateZ(-4px); } .layer-2 { transform: translateZ(-2px); } .layer-3 { transform: translateZ(0); } .layer-4 { transform: translateZ(2px); } .layer-5 { transform: translateZ(4px); }
-.coin-front { transform: translateZ(6px); } .coin-back { transform: rotateY(180deg) translateZ(6px); }
-.coin-glare { position: absolute; inset: 0; z-index: 3; border-radius: 50%; background: radial-gradient(circle at 35% 25%, var(--coin-flash), transparent 65%); opacity: 0; pointer-events: none; transition: opacity .2s; }
+.coin-gate-shell {
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* 1. Baris Atas: Header & HUD (ringkas <= 120px) */
+.coin-gate-header {
+  width: 100%;
+  max-height: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.header-topline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  position: relative;
+}
+
+.header-topline .screen-back {
+  position: static;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  min-height: 38px;
+  padding: 0;
+}
+
+.header-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.header-titles .eyebrow {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-bright);
+}
+
+.header-titles .title {
+  margin: 0;
+  font-size: clamp(1.2rem, 3.2vh, 1.55rem);
+  line-height: 1.1;
+  font-family: var(--font-display);
+}
+
+.coin-gate-header .arena-status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.coin-gate-header .status-chip {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: rgba(19, 26, 42, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.coin-gate-header .status-chip strong {
+  font-size: 1.05rem;
+  line-height: 1.1;
+  color: var(--color-gold-bright);
+}
+
+.coin-gate-header .status-chip span {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 2. Panggung Kelir Tengah (.kelir-stage) */
+.coin-arena, .kelir-stage {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  background: radial-gradient(circle at 50% 42%, rgba(212, 175, 55, 0.14) 0%, rgba(11, 15, 25, 0.96) 72%);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), inset 0 0 45px rgba(212, 175, 55, 0.08);
+  perspective: 1200px;
+  padding: 0.5rem;
+}
+
+.coin-arena.impact-shake, .kelir-stage.impact-shake {
+  animation: heavyShake 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+/* 2.1 Siluet Gunungan Latar Belakang */
+.gunungan-backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(220px, 45%, 320px);
+  height: auto;
+  transform: translate(-50%, -52%);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 0 24px rgba(255, 230, 128, 0.42));
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.coin-arena.blencong-glow .gunungan-backdrop,
+.kelir-stage.blencong-glow .gunungan-backdrop {
+  opacity: 0.36;
+  transform: translate(-50%, -52%) scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gunungan-backdrop { transition: none; }
+}
+
+/* 2.2 Landasan, Bayangan & Koin 3D */
+.pedestal {
+  position: absolute;
+  bottom: clamp(100px, 22vh, 142px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(160px, 50%, 220px);
+  height: clamp(34px, 7vh, 46px);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.28) 0%, transparent 72%);
+  border: 1.5px solid rgba(245, 208, 97, 0.5);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.shockwave-ring {
+  position: absolute;
+  bottom: clamp(104px, 23vh, 146px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.5);
+  width: clamp(120px, 36%, 160px);
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--color-gold-bright);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.coin-shadow {
+  position: absolute;
+  bottom: clamp(106px, 23vh, 150px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(90px, 26%, 124px);
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.85);
+  filter: blur(5px);
+  z-index: 8;
+  pointer-events: none;
+}
+
+.coin-row {
+  position: absolute;
+  bottom: clamp(118px, 25vh, 164px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92%, 26rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.4rem, 2vw, 1rem);
+  perspective: 900px;
+  z-index: 15;
+}
+
+.coin-row .coin-stage {
+  position: relative;
+  width: clamp(84px, 18vh, 118px);
+  height: clamp(84px, 18vh, 118px);
+  flex: 0 0 clamp(84px, 18vh, 118px);
+  aspect-ratio: 1;
+  transform-style: preserve-3d;
+}
+
+.coin-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+
+.coin-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(var(--coin-gold-deep) 0deg 3deg, var(--coin-gold-mid) 3deg 6deg);
+}
+
+.layer-1 { transform: translateZ(-4px); }
+.layer-2 { transform: translateZ(-2px); }
+.layer-3 { transform: translateZ(0); }
+.layer-4 { transform: translateZ(2px); }
+.layer-5 { transform: translateZ(4px); }
+
+.coin-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65);
+}
+
+.coin-face svg { width: 100%; height: 100%; display: block; }
+.coin-front { transform: translateZ(6px); }
+.coin-back { transform: rotateX(180deg) translateZ(6px); }
+
+.coin-glare {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 25%, var(--coin-flash), transparent 65%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+
 .is-tilting .coin-glare { opacity: .6; }
 .coin-row .coin-body { transform: rotateX(var(--coin-face-angle, 0deg)); }
-.coin-arena.is-tilting:not(.is-tossing) .coin-body { transform: rotateX(calc(var(--coin-face-angle, 0deg) + var(--tilt-x, 0deg))) rotateY(var(--tilt-y, 0deg)); }
-.fx-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 6; pointer-events: none; }
-.apex-flash { position: absolute; top: 5%; left: 25%; width: 50%; aspect-ratio: 1; background: radial-gradient(circle, var(--coin-flash), transparent 70%); opacity: 0; pointer-events: none; }
-.pedestal, .shockwave-ring { position: absolute; bottom: 25%; width: 55%; height: 10%; border: 1px solid var(--color-gold); border-radius: 50%; pointer-events: none; }
-.shockwave-ring { opacity: 0; z-index: 3; }
-.is-apex .apex-flash { animation: apexBurst .55s ease-out both; }
-.is-impact .shockwave-ring { animation: ringExpand .65s ease-out both; }
-.is-impact { animation: heavyShake .35s ease both; }
+.coin-arena.is-tilting:not(.is-tossing) .coin-body {
+  transform: rotateX(calc(var(--coin-face-angle, 0deg) + var(--tilt-x, 0deg))) rotateY(var(--tilt-y, 0deg));
+}
+
+/* 2.3 Tangan Dalang */
+.hand-rig, .dalang-hand {
+  position: absolute;
+  bottom: 68px;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: bottom center;
+  height: clamp(110px, 22vh, 155px);
+  width: auto;
+  pointer-events: none;
+  z-index: 12;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
+}
+
+.hand-rig .thumb-joint, .dalang-hand .thumb-joint { transform-origin: 96px 96px; }
+.hand-rig .index-joint, .dalang-hand .index-joint { transform-origin: 104px 70px; }
+
+.hand-rig.is-flicking, .dalang-hand.is-flicking {
+  animation: armThrust 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hand-rig.is-flicking .thumb-joint, .dalang-hand.is-flicking .thumb-joint {
+  animation: thumbFlickUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hand-rig.is-flicking .index-joint, .dalang-hand.is-flicking .index-joint {
+  animation: indexRecoil 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* 2.4 Bar Tombol Bawah */
+.arena-controls-float {
+  position: relative;
+  z-index: 30;
+  margin-top: auto;
+  margin-bottom: 0.25rem;
+  width: min(calc(100% - 1rem), 28rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 44px;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: rgba(11, 15, 25, 0.94);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(14px);
+}
+
+.arena-controls-float .button {
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.arena-controls-float .button-primary {
+  background: var(--gradient-gold);
+  color: #0B0F19;
+  border-bottom: 3px solid #7A5608;
+}
+
+.arena-controls-float .button:last-child {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+/* Elemen Pendukung Arena */
+.fx-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 6;
+  pointer-events: none;
+}
+
+.apex-flash {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  width: 50%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, var(--coin-flash), transparent 70%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 18;
+}
+
+.arena-floor {
+  position: absolute;
+  right: 11%;
+  bottom: 8%;
+  left: 11%;
+  height: 2rem;
+  border: 1px solid rgba(245, 208, 97, 0.3);
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.12);
+  box-shadow: 0 0 2rem rgba(212, 175, 55, 0.15);
+  pointer-events: none;
+}
+
+.arena-label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.85rem;
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  z-index: 20;
+}
+
+.coin-result-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 90%;
+  margin: 0;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: rgba(11, 15, 25, 0.88);
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold-bright);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.arena-hint-note {
+  position: absolute;
+  z-index: 35;
+  bottom: 74px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(100% - 2rem), 26rem);
+  margin: 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.9rem;
+  background: rgba(11, 15, 25, 0.96);
+  color: var(--color-text);
+  box-shadow: var(--shadow-card);
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
+/* Animasi Lemparan */
 .coin-arena.is-charging .coin-row .coin-stage { animation: chargeVibrate .22s linear infinite; }
 .coin-arena.is-launched .coin-row .coin-stage { animation: proTossArc 1.3s ease both; }
 .coin-arena.is-charging .coin-3d { animation: none; }
 .coin-arena.is-launched .coin-3d { animation: coin-spin-result 1.3s ease-out both; }
-.coin-row .coin-stage { flex-basis: clamp(88px, 24vw, 124px); }
-.coin-layer { background: repeating-conic-gradient(var(--coin-gold-deep) 0deg 3deg, var(--coin-gold-mid) 3deg 6deg); }
-.coin-front { transform: translateZ(6px); } .coin-back { transform: rotateX(180deg) translateZ(6px); }
-.coin-row .coin-stage { flex-basis: clamp(92px, 24vw, 126px); }
-.arena-controls-float { z-index: 20; }
-.hand-rig { z-index: 10; bottom: clamp(5rem, 20%, 7rem); }
-.hand-rig { position: absolute; left: 50%; bottom: clamp(3.4rem, 12%, 5rem); width: clamp(125px, 38%, 210px); height: auto; z-index: 16; transform: translateX(-50%); transform-origin: bottom center; pointer-events: none; }
-.hand-rig .thumb-joint { transform-origin: 112px 118px; }
-.hand-rig .index-joint { transform-origin: 122px 86px; }
-.hand-rig.is-flicking { animation: armThrust .65s cubic-bezier(.22,1,.36,1) both; }
-.hand-rig.is-flicking .thumb-joint { animation: thumbFlickUp .65s cubic-bezier(.22,1,.36,1) both; }
-.hand-rig.is-flicking .index-joint { animation: indexRecoil .65s cubic-bezier(.22,1,.36,1) both; }
-@media (prefers-reduced-motion: reduce) { .coin-arena.is-tossing .coin-row .coin-stage, .coin-arena.is-tossing .coin-3d, .coin-arena.is-impact { animation: none !important; } }
-.coin-row { position: absolute; top: 30%; left: 50%; transform: translateX(-50%); width: min(92%, 25rem); display: flex; justify-content: center; gap: clamp(.3rem, 2vw, 1rem); perspective: 900px; }
-.coin-row .coin-stage { position: relative; inset: auto; flex: 0 1 7.5rem; width: min(25vw, 7.5rem); height: auto; aspect-ratio: 1; transform: none; }
-.coin-arena.is-tossing .coin-row .coin-stage { animation: toss-row 1.7s ease both; }
-.coin-result-badge { position: absolute; top: 2.5rem; left: 50%; transform: translateX(-50%); width: max-content; max-width: 90%; margin: 0; padding: .4rem .7rem; border-radius: var(--radius-pill); background: var(--color-surface); color: var(--color-gold-bright); font-size: var(--font-size-sm); z-index: 4; }
-.toss-hand .thumb-group { transform-origin: 68px 52px; }
-.coin-arena.is-tossing .thumb-group { animation: thumb-snap .55s ease both; }
+.is-apex .apex-flash { animation: apexBurst .55s ease-out both; }
+.is-impact .shockwave-ring { animation: ringExpand .65s ease-out both; }
+.is-impact { animation: heavyShake .35s ease both; }
+.coin-shadow.airborne { animation: shadowFlight 1.3s ease both; }
 
-/* Header arena berada di atas stage; area permainan memakai sisa tinggi layar. */
-#coin-gate { align-items: start; padding: calc(env(safe-area-inset-top, 0px) + clamp(1.25rem, 4dvh, 2rem)) calc(env(safe-area-inset-right, 0px) + clamp(1.25rem, 5vw, 2rem)) calc(env(safe-area-inset-bottom, 0px) + 1rem) calc(env(safe-area-inset-left, 0px) + clamp(1.25rem, 5vw, 2rem)); }
-#coin-gate > .page-content { height: 100%; max-width: 38rem; margin: 0 auto; overflow-y: auto; }
-#coin-gate .coin-gate-shell { height: 100%; min-height: 0; max-height: none; align-content: start; grid-template-rows: auto auto auto minmax(0, 1fr); gap: clamp(.5rem, 1.5dvh, .9rem); padding-top: clamp(.4rem, 1.5dvh, 1rem); }
-#coin-gate .coin-gate-shell > .screen-back { top: 0; left: 0; }
-#coin-gate .coin-gate-shell > .eyebrow, #coin-gate .coin-gate-shell > .title { max-width: calc(100% - 7rem); }
-#coin-gate .arena-status { width: 100%; }
-#coin-gate .coin-gate-shell .two-column { height: 100%; min-height: 0; width: 100%; }
-#coin-gate .coin-arena { height: 100%; min-height: 18rem; }
-@media (max-height: 620px) { #coin-gate .coin-gate-shell { min-height: 34rem; } }
+@media (prefers-reduced-motion: reduce) {
+  .coin-arena.is-tossing .coin-row .coin-stage,
+  .coin-arena.is-tossing .coin-3d,
+  .coin-arena.is-impact,
+  .coin-shadow.airborne {
+    animation: none !important;
+  }
+}
