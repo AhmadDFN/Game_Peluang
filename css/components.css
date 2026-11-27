@@ -94,3 +94,15 @@
 .level-info-content p:not(.eyebrow) { color: var(--color-text-muted); }
 .dialog-close { position: absolute; top: .65rem; right: .65rem; }
 @media (max-width: 720px) { .splash-skip-corner { top: var(--space-3); right: var(--space-3); } .coin-arena { min-height: clamp(20rem, 56vh, 28rem); } .coin-stage { top: 20%; transform: translateX(-50%) scale(.78); } .toss-hand { bottom: 2.2rem; width: min(10rem, 43%); } .arena-status { grid-template-columns: repeat(3, 1fr); } .arena-controls-float { bottom: .65rem; width: calc(100% - 1.25rem); gap: .4rem; padding: .45rem; } .arena-controls-float .button { padding: .65rem .75rem; font-size: var(--font-size-sm); } .coin-gate-shell > .screen-back { top: -.2rem; left: -.3rem; min-height: 2.5rem; } }
+
+/* Panel arena: tiap tombol memiliki kolom dan batasnya sendiri. */
+.arena-controls-float { display: grid; grid-template-columns: minmax(0, 1fr) auto 44px; align-items: center; width: min(calc(100% - 2rem), 28rem); padding: .5rem; gap: .5rem; border-radius: 1rem; }
+.arena-controls-float .button { min-width: 0; min-height: 44px; padding: .5rem .7rem; margin: 0; white-space: nowrap; box-shadow: none; }
+.arena-controls-float .button-primary { border-bottom: 3px solid var(--coin-gold-deep); }
+.arena-controls-float .button:last-child { width: 44px; padding: 0; }
+.coin-arena { min-height: clamp(20rem, 58dvh, 32rem); }
+.toss-hand { bottom: 4rem; }
+.coin-arena.result-g { --coin-final-turn: 900deg; }
+.coin-arena.result-a { --coin-final-turn: 720deg; }
+.coin-arena.is-tossing .coin-3d { animation-name: coin-spin-result; }
+@media (max-width: 380px) { .arena-controls-float { width: calc(100% - 1rem); gap: .3rem; padding: .4rem; } .arena-controls-float .button { font-size: .8rem; padding-inline: .4rem; } }

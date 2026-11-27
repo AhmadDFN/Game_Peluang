@@ -1,5 +1,11 @@
 # Probify — Catatan Progres
 
+## Penyempurnaan arena koin
+
+- Panel kontrol menggunakan tiga kolom agar tombol tetap berada dalam bingkai dan dapat disentuh pada layar kecil.
+- Desain sisi Angka dan Gambar diperbarui dengan ornamen emas serta simbol obor dan sayap.
+- Putaran koin kini berakhir menghadap sisi hasil yang dipilih; klik berulang saat animasi berjalan diabaikan.
+
 ## Splash dan informasi level
 
 - Menghapus tombol Lewati pada splash dan memperbaiki posisi logo agar terpusat.

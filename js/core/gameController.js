@@ -22,7 +22,7 @@ const setSession = (patch) => updateState((state) => ({ ...state, session: { ...
 
 const previewCoinToss = () => {
   const arena = document.querySelector("[data-coin-arena]");
-  if (!arena) return;
+  if (!arena || arena.classList.contains("is-tossing")) return;
   const result = Math.random() < 0.5 ? "a" : "g";
   arena.classList.remove("is-tossing", "result-a", "result-g");
   void arena.offsetWidth;
