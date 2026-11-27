@@ -1,5 +1,9 @@
 # Probify — Catatan Progres
 
+## Area aman arena
+
+- Menambahkan ruang untuk notch dan inset perangkat, serta jarak kiri-kanan responsif pada arena koin.
+
 ## Tata letak arena responsif
 
 - Menempatkan tombol kembali, judul, dan status ronde di bagian atas layar.

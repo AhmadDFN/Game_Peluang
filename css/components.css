@@ -146,7 +146,7 @@
 .coin-arena.is-tossing .thumb-group { animation: thumb-snap .55s ease both; }
 
 /* Header arena berada di atas stage; area permainan memakai sisa tinggi layar. */
-#coin-gate { align-items: start; padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left)); }
+#coin-gate { align-items: start; padding: calc(env(safe-area-inset-top, 0px) + clamp(1.25rem, 4dvh, 2rem)) calc(env(safe-area-inset-right, 0px) + clamp(1.25rem, 5vw, 2rem)) calc(env(safe-area-inset-bottom, 0px) + 1rem) calc(env(safe-area-inset-left, 0px) + clamp(1.25rem, 5vw, 2rem)); }
 #coin-gate > .page-content { height: 100%; max-width: 38rem; margin: 0 auto; overflow-y: auto; }
 #coin-gate .coin-gate-shell { height: 100%; min-height: 0; max-height: none; align-content: start; grid-template-rows: auto auto auto minmax(0, 1fr); gap: clamp(.5rem, 1.5dvh, .9rem); padding-top: clamp(.4rem, 1.5dvh, 1rem); }
 #coin-gate .coin-gate-shell > .screen-back { top: 0; left: 0; }
