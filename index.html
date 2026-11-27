@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Probify — game edukasi teori peluang untuk jenjang SMA." />
+    <title>Probify — Probability + Simplify</title>
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/animations.css" />
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <main id="screen-root" class="screen-root" aria-live="polite">
+        <section id="splash-unipma" class="screen splash-screen" data-screen="splash-unipma" aria-labelledby="splash-unipma-title">
+          <div class="splash-content">
+            <img class="campus-logo splash-logo" src="./assets/images/logo-unipma.webp" alt="Logo Universitas PGRI Madiun" />
+            <p id="splash-unipma-title" class="eyebrow">Universitas PGRI Madiun</p>
+            <button class="button button-ghost splash-skip" type="button" data-action="skip-splash">Lewati</button>
+          </div>
+        </section>
+
+        <section id="splash-game" class="screen splash-screen" data-screen="splash-game" aria-labelledby="splash-game-title" hidden>
+          <div class="splash-content">
+            <svg class="probify-emblem" viewBox="0 0 160 160" role="img" aria-label="Emblem Probify">
+              <defs><linearGradient id="splash-gold" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#F5D061" /><stop offset="1" stop-color="#D4AF37" /></linearGradient></defs>
+              <circle cx="80" cy="80" r="67" fill="#131A2A" stroke="url(#splash-gold)" stroke-width="5" />
+              <circle cx="80" cy="80" r="51" fill="none" stroke="#D4AF37" stroke-width="2" stroke-dasharray="3 8" />
+              <path d="M48 94c15-26 30-39 48-39 10 0 18 3 26 9" fill="none" stroke="#F5D061" stroke-linecap="round" stroke-width="6" />
+              <path d="M111 62l11 2-7 9" fill="none" stroke="#F5D061" stroke-linecap="round" stroke-linejoin="round" stroke-width="5" />
+              <text x="80" y="106" fill="#F8FAFC" font-family="Georgia, serif" font-size="38" font-weight="700" text-anchor="middle">P</text>
+            </svg>
+            <p id="splash-game-title" class="game-wordmark">Probify</p>
+            <p class="tagline">Probability + Simplify</p>
+            <button class="button button-ghost splash-skip" type="button" data-action="skip-splash">Lewati</button>
+          </div>
+        </section>
+
+        <section id="main-menu" class="screen page-screen" data-screen="main-menu" aria-labelledby="main-menu-title" hidden>
+          <div class="page-content page-content-centered" data-render="main-menu"></div>
+        </section>
+
+        <section id="mode-select" class="screen page-screen" data-screen="mode-select" aria-labelledby="mode-select-title" hidden>
+          <div class="page-content" data-render="mode-select"></div>
+        </section>
+
+        <section id="level-select" class="screen page-screen" data-screen="level-select" aria-labelledby="level-select-title" hidden>
+          <div class="page-content" data-render="level-select"></div>
+        </section>
+
+        <section id="coin-gate" class="screen page-screen" data-screen="coin-gate" aria-labelledby="coin-gate-title" hidden>
+          <div class="page-content" data-render="coin-gate"></div>
+        </section>
+
+        <section id="formula-book" class="screen page-screen" data-screen="formula-book" aria-labelledby="formula-book-title" hidden>
+          <div class="page-content" data-render="formula-book"></div>
+        </section>
+
+        <section id="credits" class="screen page-screen" data-screen="credits" aria-labelledby="credits-title" hidden>
+          <div class="page-content" data-render="credits"></div>
+        </section>
+      </main>
+
+      <div id="modal-root" class="modal-root" aria-live="assertive"></div>
+    </div>
+
+    <script type="module" src="./js/core/gameController.js"></script>
+  </body>
+</html>

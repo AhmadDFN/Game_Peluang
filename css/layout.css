@@ -1,0 +1,27 @@
+.app-shell { min-height: 100vh; position: relative; overflow: hidden; isolation: isolate; background: var(--ambient-glow), var(--color-bg); }
+.app-shell::before { content: ""; position: fixed; inset: 0; z-index: var(--z-base); pointer-events: none; opacity: 0.36; background-image: linear-gradient(rgba(245, 208, 97, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 208, 97, 0.025) 1px, transparent 1px); background-size: 4rem 4rem; mask-image: linear-gradient(to bottom, black, transparent 82%); }
+.screen-root { min-height: 100vh; position: relative; z-index: var(--z-content); }
+.screen { min-height: 100vh; }
+.page-screen { padding: var(--space-6) var(--space-4); }
+.page-content { width: min(100%, 72rem); margin: 0 auto; }
+.page-content-centered { min-height: calc(100vh - 4rem); display: grid; place-items: center; }
+.splash-screen { display: grid; place-items: center; padding: var(--space-6); background: radial-gradient(circle at center, var(--color-surface) 0%, var(--color-bg) 58%); }
+.splash-content { display: grid; justify-items: center; gap: var(--space-3); text-align: center; }
+.campus-logo { object-fit: contain; }
+.splash-logo { width: min(16rem, 60vw); aspect-ratio: 1; }
+.hero-grid, .card-grid { display: grid; gap: var(--space-4); }
+.hero-grid { max-width: 42rem; text-align: center; }
+.card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stack { display: grid; gap: var(--space-4); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.actions-centered { justify-content: center; }
+.section-header { display: flex; justify-content: space-between; gap: var(--space-4); align-items: end; margin-bottom: var(--space-6); }
+.two-column { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.9fr); gap: var(--space-6); align-items: start; }
+
+@media (max-width: 720px) {
+  .page-screen { padding: var(--space-5) var(--space-3); }
+  .card-grid, .two-column { grid-template-columns: 1fr; }
+  .section-header { align-items: start; flex-direction: column; }
+  .actions { flex-direction: column; align-items: stretch; }
+  .actions .button { width: 100%; }
+}
