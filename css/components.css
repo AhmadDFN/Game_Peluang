@@ -126,6 +126,12 @@
 .coin-arena.is-charging .coin-3d { animation: none; }
 .coin-arena.is-launched .coin-3d { animation: coin-spin-result 1.3s ease-out both; }
 .coin-row .coin-stage { flex-basis: clamp(88px, 24vw, 124px); }
+.hand-rig { position: absolute; left: 50%; bottom: clamp(3.4rem, 12%, 5rem); width: clamp(125px, 38%, 210px); height: auto; z-index: 16; transform: translateX(-50%); transform-origin: bottom center; pointer-events: none; }
+.hand-rig .thumb-joint { transform-origin: 112px 118px; }
+.hand-rig .index-joint { transform-origin: 122px 86px; }
+.hand-rig.is-flicking { animation: armThrust .65s cubic-bezier(.22,1,.36,1) both; }
+.hand-rig.is-flicking .thumb-joint { animation: thumbFlickUp .65s cubic-bezier(.22,1,.36,1) both; }
+.hand-rig.is-flicking .index-joint { animation: indexRecoil .65s cubic-bezier(.22,1,.36,1) both; }
 @media (prefers-reduced-motion: reduce) { .coin-arena.is-tossing .coin-row .coin-stage, .coin-arena.is-tossing .coin-3d, .coin-arena.is-impact { animation: none !important; } }
 .coin-row { position: absolute; top: 30%; left: 50%; transform: translateX(-50%); width: min(92%, 25rem); display: flex; justify-content: center; gap: clamp(.3rem, 2vw, 1rem); perspective: 900px; }
 .coin-row .coin-stage { position: relative; inset: auto; flex: 0 1 7.5rem; width: min(25vw, 7.5rem); height: auto; aspect-ratio: 1; transform: none; }

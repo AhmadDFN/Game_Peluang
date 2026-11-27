@@ -45,6 +45,9 @@
   --coin-gold-mid: #F5D061;
   --coin-gold-deep: #8A640F;
   --coin-flash: rgba(255, 243, 179, .8);
+  --hand-sleeve-light: #1E293B;
+  --hand-sleeve-dark: #070B14;
+  --hand-gold-light: #FFF0A6;
   --screen-gutter: clamp(1rem, 4vw, 3rem);
 
   --z-base: 0;

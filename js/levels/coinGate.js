@@ -32,10 +32,10 @@ export function animateCoinToss(outcomes) {
   const label = arena.querySelector("[data-coin-result]"), reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   arena.classList.add("is-tossing", "is-charging"); label.textContent = "Koin sedang dilempar…"; playCoinPhase("coinCharge");
   const later = (ms, fn) => window.setTimeout(() => { if (arena.isConnected) fn(); }, reduced ? Math.min(ms, 120) : ms);
-  later(220, () => { arena.classList.remove("is-charging"); arena.classList.add("is-launched"); playCoinPhase("coinLaunch"); });
+  later(220, () => { arena.classList.remove("is-charging"); arena.classList.add("is-launched"); arena.querySelector(".hand-rig")?.classList.add("is-flicking"); playCoinPhase("coinLaunch"); });
   later(620, () => { arena.classList.add("is-apex"); playCoinPhase("coinApex"); if (!reduced) burst(arena.querySelector("canvas"), 16, .25); });
   later(1200, () => { arena.classList.add("is-impact"); playCoinPhase("coinImpact"); if (!reduced) burst(arena.querySelector("canvas"), 32, .7); });
-  later(1520, () => { arena.classList.remove("is-tossing", "is-launched", "is-apex", "is-impact", "is-charging"); label.textContent = `Hasil: ${outcomes.map(v => v === "A" ? "Angka (A)" : "Gambar (G)").join(" • ")}`; });
+  later(1520, () => { arena.classList.remove("is-tossing", "is-launched", "is-apex", "is-impact", "is-charging"); arena.querySelector(".hand-rig")?.classList.remove("is-flicking"); label.textContent = `Hasil: ${outcomes.map(v => v === "A" ? "Angka (A)" : "Gambar (G)").join(" • ")}`; });
   return true;
 }
 

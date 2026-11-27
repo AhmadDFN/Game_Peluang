@@ -1,5 +1,9 @@
 # Probify — Catatan Progres
 
+## Tangan Royal Strategist
+
+- Mengintegrasikan SVG tangan dengan sendi jempol dan telunjuk yang bergerak saat fase peluncuran koin.
+
 ## Pro 3D Coin Juice
 
 - Menambahkan pengendali `animateCoinToss(outcomes)` pada `js/levels/coinGate.js`, audio empat fase, tilt, kilatan, gelombang, dan partikel canvas.

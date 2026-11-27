@@ -26,6 +26,9 @@
 @keyframes apexBurst { 0% { opacity: 0; transform: scale(.3); } 40% { opacity: 1; } 100% { opacity: 0; transform: scale(1.3); } }
 @keyframes ringExpand { from { opacity: .9; transform: scale(.5); } to { opacity: 0; transform: scale(1.7); } }
 @keyframes heavyShake { 0%,100% { transform: translateX(0); } 25%,75% { transform: translateX(-3px); } 50% { transform: translateX(3px); } }
+@keyframes armThrust { 0%,100% { transform: translateX(-50%) translateY(0) rotate(0); } 25% { transform: translateX(-50%) translateY(12px) rotate(4deg); } 50% { transform: translateX(-50%) translateY(-20px) rotate(-5deg); } }
+@keyframes thumbFlickUp { 0%,100% { transform: rotate(0); } 25% { transform: rotate(24deg) translate(-2px,4px); } 48% { transform: rotate(-48deg) translate(4px,-6px); } }
+@keyframes indexRecoil { 0%,100% { transform: rotate(0); } 48% { transform: rotate(-10deg); } }
 @keyframes coin-specular { 0%, 50% { transform: translateX(-130%) skewX(-18deg); } 72%, 100% { transform: translateX(130%) skewX(-18deg); } }
 @keyframes shadow-toss { 0%,100% { transform: scale(1); opacity: .75; } 50% { transform: scale(.4); opacity: .25; } }
 @keyframes table-impact { 0%,84%,100% { transform: translateX(0); } 87%,91%,95% { transform: translateX(3px); } 89%,93%,97% { transform: translateX(-3px); } }
