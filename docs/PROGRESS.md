@@ -3,6 +3,7 @@
 ## Perbaikan tampilan Royal Mint
 
 - Memperbaiki format referensi gradasi SVG yang menyebabkan modul renderer gagal dimuat.
+- Memberi versi pada URL CSS dan modul agar cache browser tidak mencampur file lama dan baru.
 
 ## Koin Royal Mint
 

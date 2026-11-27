@@ -1,4 +1,4 @@
-import { playCoinToss } from "../core/audioEngine.js";
+import { playCoinToss } from "../core/audioEngine.js?v=11803ac";
 
 /** Memvisualisasikan hasil engine berupa 'A', 'G', 'AG', atau array simbol. */
 export function triggerCoinToss(outcome) {

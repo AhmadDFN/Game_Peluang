@@ -1,4 +1,4 @@
-import { getState, subscribe } from "../core/gameState.js";
+import { getState, subscribe } from "../core/gameState.js?v=11803ac";
 
 let currentScreen = null;
 let locked = false;

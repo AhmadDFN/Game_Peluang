@@ -1,5 +1,5 @@
-import { AI_DIFFICULTY, AUTHOR_TEXT, CAMPUS_NAME, GAME_MODE, GAME_TAGLINE, GAME_TITLE, SCREEN } from "../core/constants.js";
-import { getState, subscribe } from "../core/gameState.js";
+import { AI_DIFFICULTY, AUTHOR_TEXT, CAMPUS_NAME, GAME_MODE, GAME_TAGLINE, GAME_TITLE, SCREEN } from "../core/constants.js?v=11803ac";
+import { getState, subscribe } from "../core/gameState.js?v=11803ac";
 
 const button = (label, action, className = "button-secondary") => `<button class="button ${className}" type="button" data-action="${action}">${label}</button>`;
 const header = (eyebrow, title, description) => `<p class="eyebrow">${eyebrow}</p><h1 class="title">${title}</h1><p class="subtitle">${description}</p>`;

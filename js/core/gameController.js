@@ -1,11 +1,11 @@
-import { AI_DIFFICULTY, GAME_MODE, SCREEN, SPLASH_DURATION_MS } from "./constants.js";
-import { loadPreferences, savePreferences } from "./storage.js";
-import { playCoinToss, setMuted } from "./audioEngine.js";
-import { getState, resetSession, updateState } from "./gameState.js";
-import { initInputHandlers } from "../ui/inputHandlers.js";
-import { initRenderers } from "../ui/renderers.js";
-import { initScreenManager } from "../ui/screenManager.js";
-import { animateCoinToss, initCoinTilt } from "../levels/coinGate.js";
+import { AI_DIFFICULTY, GAME_MODE, SCREEN, SPLASH_DURATION_MS } from "./constants.js?v=11803ac";
+import { loadPreferences, savePreferences } from "./storage.js?v=11803ac";
+import { playCoinToss, setMuted } from "./audioEngine.js?v=11803ac";
+import { getState, resetSession, updateState } from "./gameState.js?v=11803ac";
+import { initInputHandlers } from "../ui/inputHandlers.js?v=11803ac";
+import { initRenderers } from "../ui/renderers.js?v=11803ac";
+import { initScreenManager } from "../ui/screenManager.js?v=11803ac";
+import { animateCoinToss, initCoinTilt } from "../levels/coinGate.js?v=11803ac";
 
 const history = [];
 const goTo = (screen, direction = "forward") => {

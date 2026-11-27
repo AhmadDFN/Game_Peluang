@@ -1,4 +1,4 @@
-import { playCoinPhase } from "../core/audioEngine.js";
+import { playCoinPhase } from "../core/audioEngine.js?v=11803ac";
 
 function burst(canvas, count, yRatio) {
   const ctx = canvas?.getContext("2d");
