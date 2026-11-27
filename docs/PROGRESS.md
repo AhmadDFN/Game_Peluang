@@ -1,5 +1,12 @@
 # Probify — Catatan Progres
 
+## 2026-11-27 — Navigasi ringkas dan kontrol arena
+
+- Menyederhanakan pergantian stage menjadi fade singkat agar alur pilih mode/AI/level terasa langsung.
+- Memusatkan kontrol Lempar Koin, Hint, dan audio sebagai panel mengambang di bawah arena/tangan.
+- Menambahkan gerak idle halus pada tangan serta pesan preview Hint.
+- Back tetap konsisten melalui tombol arena dan Escape.
+
 ## Pembaruan game feel
 
 - Membersihkan latar kotak logo menggunakan flood-fill dan menyimpan PNG transparan.

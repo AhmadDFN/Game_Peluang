@@ -31,7 +31,7 @@ export const showScreen = (screenId, direction = "forward") => {
   }
   next.classList.add(direction === "back" ? "is-entering-back" : "is-entering-forward");
   if (previous) previous.classList.add(direction === "back" ? "is-exiting-back" : "is-exiting-forward");
-  window.setTimeout(finish, 450);
+  window.setTimeout(finish, 220);
 };
 
 export const initScreenManager = () => {

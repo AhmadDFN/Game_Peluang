@@ -22,6 +22,19 @@
 .coin-arena.is-tossing::after { animation: shadow-toss 1.7s ease both; }
 .coin-arena.is-tossing .arena-floor { animation: table-impact 1.7s ease both; }
 .coin-arena.is-tossing .arena-label { animation: spark-flash 1.7s ease both; }
+.coin-gate-shell { position: relative; display: grid; justify-items: center; gap: clamp(.45rem, 1.2vh, .8rem); max-height: 100%; }
+.coin-gate-shell > .screen-back { position: absolute; top: 0; left: 0; z-index: 4; }
+.coin-gate-shell > .eyebrow { margin: 0; }
+.coin-gate-shell > .title { margin: 0; font-size: clamp(1.5rem, 3.2vh, 2.4rem); }
+.coin-gate-shell > .subtitle { display: none; }
+.coin-gate-shell .arena-status { width: min(100%, 32rem); }
+.coin-gate-shell .two-column { display: block; width: min(100%, 38rem); }
+.coin-arena { min-height: clamp(22rem, 58vh, 34rem); }
+.arena-controls-float { position: absolute; z-index: 5; bottom: clamp(.75rem, 3vh, 1.4rem); left: 50%; display: flex; width: min(calc(100% - 2rem), 30rem); justify-content: center; gap: .65rem; padding: .65rem; transform: translateX(-50%); border: 1px solid var(--color-border); border-radius: var(--radius-pill); background: rgba(11, 15, 25, .88); box-shadow: 0 0.8rem 2rem rgba(0,0,0,.4), 0 0 1.3rem rgba(212,175,55,.12); backdrop-filter: blur(14px); }
+.arena-controls-float .button { min-height: 2.75rem; }
+.arena-controls-float .button-primary { flex: 1; }
+.arena-hint-note { position: absolute; z-index: 6; right: 1rem; bottom: 5rem; left: 1rem; margin: 0 auto; width: fit-content; max-width: 32rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: .75rem 1rem; background: rgba(11,15,25,.94); color: var(--color-text); box-shadow: var(--shadow-card); font-size: var(--font-size-sm); }
+.coin-gate-shell .card.stack { display: none; }
 .button-primary { background: var(--gradient-gold); color: var(--color-bg); background-size: 180% 100%; }
 .button-primary:hover { background-position: 100% 0; }
 .button-secondary { border-color: var(--color-border); background: var(--color-surface); color: var(--color-text); }
@@ -59,6 +72,7 @@
 .coin-arena.result-g .coin-3d { transform: rotateX(0deg) rotateY(180deg); }
 .toss-hand { position: absolute; bottom: -0.5rem; left: 50%; width: min(14rem, 42%); transform: translateX(-50%); transform-origin: 50% 100%; filter: drop-shadow(0 0 1rem rgba(212, 175, 55, 0.15)); }
 .coin-arena.is-tossing .toss-hand { animation: hand-flick 1.7s ease both; }
+.coin-arena:not(.is-tossing) .toss-hand { animation: hand-idle 4.2s ease-in-out infinite; }
 .arena-floor { position: absolute; right: 11%; bottom: 8%; left: 11%; height: 2rem; border: 1px solid rgba(245, 208, 97, 0.3); border-radius: 50%; background: rgba(212, 175, 55, 0.12); box-shadow: 0 0 2rem rgba(212, 175, 55, 0.15); }
 .arena-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); }
 .arena-status { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-2); text-align: center; }
@@ -69,4 +83,4 @@
 .modal-backdrop { display: grid; min-height: 100%; place-items: center; padding: var(--space-4); background: rgba(4, 7, 13, 0.82); }
 .modal-card { width: min(100%, 32rem); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5); background: var(--color-surface); box-shadow: var(--shadow-card); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-@media (max-width: 720px) { .splash-skip-corner { top: var(--space-3); right: var(--space-3); } .coin-arena { min-height: 27rem; } .coin-stage { top: 23%; transform: translateX(-50%) scale(0.82); } .toss-hand { width: 42%; } .arena-status { grid-template-columns: 1fr; } }
+@media (max-width: 720px) { .splash-skip-corner { top: var(--space-3); right: var(--space-3); } .coin-arena { min-height: clamp(20rem, 56vh, 28rem); } .coin-stage { top: 20%; transform: translateX(-50%) scale(.78); } .toss-hand { bottom: 2.2rem; width: min(10rem, 43%); } .arena-status { grid-template-columns: repeat(3, 1fr); } .arena-controls-float { bottom: .65rem; width: calc(100% - 1.25rem); gap: .4rem; padding: .45rem; } .arena-controls-float .button { padding: .65rem .75rem; font-size: var(--font-size-sm); } .coin-gate-shell > .screen-back { top: -.2rem; left: -.3rem; min-height: 2.5rem; } }

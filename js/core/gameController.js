@@ -40,6 +40,19 @@ const handleAction = (action) => {
   if (action === "go-credits") return goTo(SCREEN.CREDITS);
   if (action === "go-coin-gate") return goTo(SCREEN.COIN_GATE);
   if (action === "preview-coin") return previewCoinToss();
+  if (action === "show-preview-hint") {
+    const arena = document.querySelector("[data-coin-arena]");
+    if (!arena) return;
+    let hint = arena.querySelector("[data-preview-hint]");
+    if (!hint) {
+      hint = document.createElement("p");
+      hint.dataset.previewHint = "true";
+      hint.className = "arena-hint-note";
+      hint.textContent = "Hint dan ruang sampel lengkap akan tersedia saat gameplay Level 1 diimplementasikan.";
+      arena.append(hint);
+    } else hint.remove();
+    return;
+  }
   if (action === "toggle-mute") {
     const isMuted = !getState().app.isMuted;
     setMuted(isMuted);
