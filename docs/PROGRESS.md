@@ -1,5 +1,11 @@
 # Probify — Catatan Progres
 
+## Responsivitas ponsel — Pilih Mode
+
+- Menambahkan tata letak ponsel berdasarkan lebar layar, termasuk viewport tinggi yang sebelumnya luput dari aturan tinggi 720px.
+- Menempatkan dua kartu mode berdampingan dan tiga tingkat AI dalam satu baris, dengan tombol minimal 44px.
+- Menambahkan penyesuaian layar pendek, area aman perangkat, dan fallback gulir konten bila ruang sangat terbatas atau teks diperbesar.
+
 ## Perbaikan live test — Pilih Mode
 
 - Menghapus tombol Kembali duplikat di bagian bawah layar Pilih Mode.
