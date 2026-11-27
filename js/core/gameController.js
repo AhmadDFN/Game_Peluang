@@ -35,7 +35,19 @@ const handleAction = (action) => {
   if (action === "skip-splash") return goTo(SCREEN.MAIN_MENU);
   if (action === "go-main-menu" || action === "go-back") return goBack();
   if (action === "go-mode-select") return goTo(SCREEN.MODE_SELECT);
-  if (action === "go-level-select") return goTo(SCREEN.LEVEL_SELECT);
+  if (action === "go-level-select") {
+    goTo(SCREEN.LEVEL_SELECT);
+    window.setTimeout(() => {
+      const dialog = document.getElementById("level-info");
+      if (getState().app.screen === SCREEN.LEVEL_SELECT && dialog && !dialog.open) dialog.showModal();
+    }, 250);
+    return;
+  }
+  if (action === "show-level-info") {
+    const dialog = document.getElementById("level-info");
+    if (dialog && !dialog.open) dialog.showModal();
+    return;
+  }
   if (action === "go-formula-book") return goTo(SCREEN.FORMULA_BOOK);
   if (action === "go-credits") return goTo(SCREEN.CREDITS);
   if (action === "go-coin-gate") return goTo(SCREEN.COIN_GATE);

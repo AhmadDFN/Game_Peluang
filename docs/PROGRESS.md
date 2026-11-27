@@ -1,5 +1,11 @@
 # Probify — Catatan Progres
 
+## Splash dan informasi level
+
+- Menghapus tombol Lewati pada splash dan memperbaiki posisi logo agar terpusat.
+- Mengubah tombol Kembali menjadi ikon melayang di kiri atas.
+- Menambahkan informasi Pilih Level sebagai dialog yang dapat ditutup dan dibuka kembali melalui ikon informasi.
+
 ## Responsivitas ponsel — Pilih Mode
 
 - Menambahkan tata letak ponsel berdasarkan lebar layar, termasuk viewport tinggi yang sebelumnya luput dari aturan tinggi 720px.

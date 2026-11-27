@@ -5,7 +5,7 @@
 .page-screen { padding: clamp(1rem, 3vh, 1.5rem); }
 .page-content { width: 100%; max-width: 960px; max-height: 100%; margin: auto; overflow: auto; scrollbar-width: none; text-align: center; }
 .page-content-centered { display: flex; flex-direction: column; justify-content: center; align-items: center; }
-.splash-screen { position: relative; padding: var(--space-6); background: radial-gradient(circle at center, var(--color-surface) 0%, var(--color-bg) 58%); }
+.splash-screen { position: absolute; padding: var(--space-6); background: radial-gradient(circle at center, var(--color-surface) 0%, var(--color-bg) 58%); }
 .splash-content { display: grid; justify-items: center; gap: var(--space-3); text-align: center; }
 .campus-logo { object-fit: contain; }
 .splash-logo { width: min(16rem, 60vw); aspect-ratio: 1; }

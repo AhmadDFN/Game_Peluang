@@ -15,7 +15,6 @@
     <div id="app" class="app-shell">
       <main id="screen-root" class="screen-root" aria-live="polite">
         <section id="splash-unipma" class="screen splash-screen" data-screen="splash-unipma" aria-labelledby="splash-unipma-title">
-          <button class="button button-ghost splash-skip splash-skip-corner" type="button" data-action="skip-splash">Lewati</button>
           <div class="splash-content">
             <img class="campus-logo splash-logo" src="./assets/images/logo-unipma-clean.png" alt="Logo Universitas PGRI Madiun" />
             <div class="splash-institution"><p id="splash-unipma-title">UNIVERSITAS PGRI MADIUN</p><p>FAKULTAS KEGURUAN DAN ILMU PENDIDIKAN</p></div>
@@ -34,7 +33,6 @@
             </svg>
             <p id="splash-game-title" class="game-wordmark">Probify</p>
             <p class="tagline">Probability + Simplify</p>
-            <button class="button button-ghost splash-skip splash-skip-corner" type="button" data-action="skip-splash">Lewati</button>
           </div>
         </section>
 
@@ -64,6 +62,15 @@
       </main>
 
       <div id="modal-root" class="modal-root" aria-live="assertive"></div>
+      <dialog id="level-info" class="level-info-dialog" aria-labelledby="level-info-title" aria-describedby="level-info-description">
+        <div class="level-info-content">
+          <form method="dialog"><button class="floating-icon dialog-close" aria-label="Tutup informasi">×</button></form>
+          <p class="eyebrow">Petunjuk</p>
+          <h2 id="level-info-title">Pilih Level</h2>
+          <p id="level-info-description">Mulai dari konsep peluang koin. Tantangan berikutnya akan hadir dalam pembaruan mendatang.</p>
+          <form method="dialog"><button class="button button-primary">Mengerti</button></form>
+        </div>
+      </dialog>
     </div>
 
     <script type="module" src="./js/core/gameController.js"></script>

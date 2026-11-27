@@ -12,7 +12,10 @@ export const initInputHandlers = (handler) => {
     handler(target.dataset.action);
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") { event.preventDefault(); handler("go-back"); }
+    if (event.key === "Escape") {
+      if (document.querySelector("dialog[open]")) return;
+      event.preventDefault(); handler("go-back");
+    }
     if ((event.key === "Enter" || event.key === " ") && event.target.matches("[data-action]")) { event.preventDefault(); event.target.click(); }
   });
 };
