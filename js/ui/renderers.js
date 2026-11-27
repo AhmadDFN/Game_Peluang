@@ -84,73 +84,58 @@ const gununganBackdrop = () => `<svg class="gunungan-backdrop" viewBox="0 0 240 
   <polygon points="120,174 86,198 154,198" fill="#070A12"/>
 </svg>`;
 
-// ─── SVG Koin Neo-Wayang: Sisi A (Probify Wayang) ──────────────────────────
+// ─── SVG Koin Neo-Wayang: Sisi A (Wayang Arjuna — Lencana A) ────────────────
 const coinFrontSvgRaw = (idx = 0) => `<svg viewBox="0 0 200 200" width="100%" height="100%">
   <defs>
-    <radialGradient id="goldA-${idx}" cx="32%" cy="28%" r="72%">
-      <stop offset="0%" stop-color="#FFF8CC"/>
-      <stop offset="42%" stop-color="#F2C94C"/>
-      <stop offset="100%" stop-color="#7A5608"/>
+    <radialGradient id="wayangBgA-${idx}" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFF4B8"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#5C3F05"/>
     </radialGradient>
-    <path id="arcTopA-${idx}" d="M 32,100 A 68,68 0 1,1 168,100" />
-    <path id="arcBotA-${idx}" d="M 168,100 A 68,68 0 1,1 32,100" />
   </defs>
-  <circle cx="100" cy="100" r="98" fill="url(#goldA-${idx})" stroke="#FFE680" stroke-width="4"/>
-  <circle cx="100" cy="100" r="85" fill="none" stroke="#5C3F05" stroke-width="2" stroke-dasharray="3 2.5"/>
-  <!-- Ornamen Sumping & Garuda Mungkur Wayang di Kiri-Kanan -->
-  <g fill="#4A3204" opacity="0.35">
-    <path d="M44 100 C36 82 46 66 60 64 C52 78 54 90 62 100 C54 110 52 122 60 136 C46 134 36 118 44 100 Z"/>
-    <path d="M156 100 C164 82 154 66 140 64 C148 78 146 90 138 100 C146 110 148 122 140 136 C154 134 164 118 156 100 Z"/>
+  <circle cx="100" cy="100" r="98" fill="url(#wayangBgA-${idx})" stroke="#FFE680" stroke-width="4"/>
+  <circle cx="100" cy="100" r="88" fill="#141A29" stroke="#D4AF37" stroke-width="2"/>
+  <!-- Ilustrasi Wayang Ksatria (Arjuna) Full Body Khas Wayang Kulit -->
+  <g transform="translate(0, -4)">
+    <!-- Gelung Supit Urang -->
+    <path d="M90 54 C68 48 64 26 80 18 C92 12 106 22 100 34 C96 41 88 38 90 31" fill="none" stroke="#FFE680" stroke-width="6" stroke-linecap="round"/>
+    <!-- Mahkota & Profil Wajah Wayang -->
+    <path d="M88 52 L114 44 L115 56 L126 62 L114 67 L116 73 L108 77 L94 72 Z" fill="#F5D061"/>
+    <path d="M103 54 Q108 52 112 55" stroke="#141A29" stroke-width="2" fill="none"/>
+    <!-- Badan Ramping & Bahu Wayang -->
+    <path d="M84 76 L116 76 L110 112 L90 112 Z" fill="#D4AF37"/>
+    <!-- Tangan Wayang Panjang Khas Kulit -->
+    <path d="M84 78 L66 108 L74 128 M116 78 L134 106 L128 126" fill="none" stroke="#FFE680" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Kain Dodot / Jarik Batik -->
+    <path d="M88 112 L112 112 L122 146 L78 146 Z" fill="#F5D061"/>
+    <path d="M86 122 L114 132 M83 134 L117 142" stroke="#5C3F05" stroke-width="2.5"/>
   </g>
-  <text fill="#3D2802" font-size="11" font-weight="900" letter-spacing="3.5">
-    <textPath href="#arcTopA-${idx}" startOffset="50%" text-anchor="middle">• SISI ANGKA •</textPath>
-  </text>
-  <text fill="#4A3204" font-size="9.5" font-weight="800" letter-spacing="2.5">
-    <textPath href="#arcBotA-${idx}" startOffset="50%" text-anchor="middle">PROBIFY WAYANG</textPath>
-  </text>
-  <text x="100" y="131" text-anchor="middle" fill="#FFF7C2" font-size="92" font-weight="900" font-family="Georgia, serif" opacity="0.65" transform="translate(1.5,2)">A</text>
-  <text x="100" y="131" text-anchor="middle" fill="#2E1E01" font-size="92" font-weight="900" font-family="Georgia, serif">A</text>
+  <!-- Lencana Penanda Angka (A) -->
+  <rect x="64" y="150" width="72" height="24" rx="12" fill="#D4AF37" stroke="#FFF4B8" stroke-width="1.5"/>
+  <text x="100" y="166" text-anchor="middle" fill="#0B0F19" font-size="13" font-weight="900">ANGKA (A)</text>
 </svg>`;
 
-// ─── SVG Koin Neo-Wayang: Sisi G (Ukiran Relief Tokoh Wayang) ────────────────
+// ─── SVG Koin Neo-Wayang: Sisi G (Gunungan Kayon — Lencana G) ────────────────
 const coinBackSvgRaw = (idx = 0) => `<svg viewBox="0 0 200 200" width="100%" height="100%">
   <defs>
-    <radialGradient id="goldG-${idx}" cx="32%" cy="28%" r="72%">
-      <stop offset="0%" stop-color="#FFF5BD"/>
-      <stop offset="42%" stop-color="#E5B83B"/>
-      <stop offset="100%" stop-color="#6B4C07"/>
+    <radialGradient id="wayangBgG-${idx}" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#FFF4B8"/>
+      <stop offset="50%" stop-color="#C99A22"/>
+      <stop offset="100%" stop-color="#5C3F05"/>
     </radialGradient>
-    <path id="arcTopG-${idx}" d="M 32,100 A 68,68 0 1,1 168,100" />
-    <path id="arcBotG-${idx}" d="M 168,100 A 68,68 0 1,1 32,100" />
   </defs>
-  <circle cx="100" cy="100" r="98" fill="url(#goldG-${idx})" stroke="#FFE680" stroke-width="4"/>
-  <circle cx="100" cy="100" r="85" fill="none" stroke="#5C3F05" stroke-width="2" stroke-dasharray="3 2.5"/>
-  <text fill="#3D2802" font-size="11" font-weight="900" letter-spacing="3.5">
-    <textPath href="#arcTopG-${idx}" startOffset="50%" text-anchor="middle">• SISI GAMBAR •</textPath>
-  </text>
-  <text fill="#2E1E01" font-size="11.5" font-weight="900" letter-spacing="2.5">
-    <textPath href="#arcBotG-${idx}" startOffset="50%" text-anchor="middle">WAYANG ( G )</textPath>
-  </text>
-
-  <!-- Ukiran Relief Tokoh Wayang (Gelung Supit Urang, Profil Wajah & Praba) -->
-  <g transform="translate(2, 4)">
-    <!-- Gelung Supit Urang (Mahkota Melengkung Khas Wayang) -->
-    <path d="M84 82 C62 76 54 54 70 42 C82 33 98 42 94 56 C91 64 81 62 82 54 C83 49 89 49 90 53"
-          fill="none" stroke="#3D2802" stroke-width="7" stroke-linecap="round"/>
-    <!-- Jamang & Hiasan Dahi -->
-    <path d="M82 78 L114 68 L112 80 L84 88 Z" fill="#3D2802"/>
-    <!-- Profil Wajah Wayang Menghadap Kanan (Hidung Mancung Khas Wayang Kulit) -->
-    <path d="M90 84 L114 78 L116 92 L127 98 L115 103 L117 109 L111 112 L114 118 L104 121 L94 114 Z"
-          fill="#3D2802"/>
-    <!-- Mata Liyeupan & Alis -->
-    <path d="M103 89 Q109 87 113 90 Q108 92 103 89 Z" fill="#FFE680"/>
-    <!-- Sumping (Hiasan Telinga) & Garuda Mungkur Belakang -->
-    <path d="M86 84 C74 88 70 102 78 112 C82 104 84 96 90 92 Z" fill="#3D2802"/>
-    <!-- Bahu, Kalung Ulur-Ulur & Sayap Praba -->
-    <path d="M72 138 C74 122 86 116 102 118 C118 120 128 128 130 142 L68 142 Z" fill="#3D2802"/>
-    <!-- Detail Tatah Sungging (Garis Ukiran Emas di Dalam Siluet) -->
-    <path d="M86 125 Q100 134 116 126 M92 132 Q101 139 111 132" fill="none" stroke="#FFE680" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="100" cy="100" r="98" fill="url(#wayangBgG-${idx})" stroke="#FFE680" stroke-width="4"/>
+  <circle cx="100" cy="100" r="88" fill="#1A1208" stroke="#F5D061" stroke-width="2"/>
+  <!-- Ilustrasi Gunungan Kayon Wayang Kulit Detail -->
+  <g transform="translate(0, -4)">
+    <path d="M100 18 C118 46 148 78 152 114 C154 130 142 142 126 146 L74 146 C58 142 46 130 48 114 C52 78 82 46 100 18 Z" fill="#D4AF37" stroke="#FFF4B8" stroke-width="2"/>
+    <path d="M100 34 L100 142 M100 66 L78 80 M100 66 L122 80 M100 92 L68 110 M100 92 L132 110" stroke="#1A1208" stroke-width="3" stroke-linecap="round"/>
+    <rect x="82" y="116" width="36" height="28" rx="3" fill="#1A1208"/>
+    <polygon points="100,102 78,118 122,118" fill="#1A1208"/>
   </g>
+  <!-- Lencana Penanda Gambar (G) -->
+  <rect x="60" y="150" width="80" height="24" rx="12" fill="#FFE680" stroke="#5C3F05" stroke-width="1.5"/>
+  <text x="100" y="166" text-anchor="middle" fill="#0B0F19" font-size="13" font-weight="900">GAMBAR (G)</text>
 </svg>`;
 
 const coinSideSvg = (side, idx = 0) => side === "front" ? coinFrontSvgRaw(idx) : coinBackSvgRaw(idx);
@@ -211,8 +196,8 @@ const renderCoinGate = (state) => {
           <div class="coin-layer layer-3"></div>
           <div class="coin-layer layer-4"></div>
           <div class="coin-layer layer-5"></div>
-          <div class="coin-face coin-front">${coinSideSvg("front")}<span class="coin-glare"></span></div>
-          <div class="coin-face coin-back">${coinSideSvg("back")}<span class="coin-glare"></span></div>
+          <div class="coin-face coin-front face-a">${coinSideSvg("front")}<span class="coin-glare"></span></div>
+          <div class="coin-face coin-back face-g">${coinSideSvg("back")}<span class="coin-glare"></span></div>
           <div class="coin-edge"></div>
         </div>
       </div>

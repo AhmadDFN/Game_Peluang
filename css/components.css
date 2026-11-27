@@ -316,8 +316,8 @@
 }
 
 .coin-face svg { width: 100%; height: 100%; display: block; }
-.coin-front { transform: translateZ(6px); }
-.coin-back { transform: rotateX(180deg) translateZ(6px); }
+.coin-front, .face-a { transform: translateZ(6px); }
+.coin-back, .face-g { transform: rotateX(180deg) translateZ(6px); }
 
 .coin-glare {
   position: absolute;
