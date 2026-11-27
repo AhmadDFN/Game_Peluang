@@ -1,5 +1,10 @@
 # Probify — Catatan Progres
 
+## Koin Royal Mint
+
+- Mengganti kedua sisi koin dengan SVG relief Royal Mint dan memberi ID SVG unik untuk setiap koin.
+- Memperbaiki gerigi tepi, orientasi akhir A/G, dan lapisan tangan agar tombol arena tetap terlihat.
+
 ## Tangan Royal Strategist
 
 - Mengintegrasikan SVG tangan dengan sendi jempol dan telunjuk yang bergerak saat fase peluncuran koin.

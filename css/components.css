@@ -112,8 +112,8 @@
 .coin-front { transform: translateZ(6px); } .coin-back { transform: rotateY(180deg) translateZ(6px); }
 .coin-glare { position: absolute; inset: 0; z-index: 3; border-radius: 50%; background: radial-gradient(circle at 35% 25%, var(--coin-flash), transparent 65%); opacity: 0; pointer-events: none; transition: opacity .2s; }
 .is-tilting .coin-glare { opacity: .6; }
-.coin-row .coin-body { transform: rotateY(var(--coin-face-angle, 0deg)); }
-.coin-arena.is-tilting:not(.is-tossing) .coin-body { transform: rotateX(var(--tilt-x, 0deg)) rotateY(calc(var(--coin-face-angle, 0deg) + var(--tilt-y, 0deg))); }
+.coin-row .coin-body { transform: rotateX(var(--coin-face-angle, 0deg)); }
+.coin-arena.is-tilting:not(.is-tossing) .coin-body { transform: rotateX(calc(var(--coin-face-angle, 0deg) + var(--tilt-x, 0deg))) rotateY(var(--tilt-y, 0deg)); }
 .fx-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 6; pointer-events: none; }
 .apex-flash { position: absolute; top: 5%; left: 25%; width: 50%; aspect-ratio: 1; background: radial-gradient(circle, var(--coin-flash), transparent 70%); opacity: 0; pointer-events: none; }
 .pedestal, .shockwave-ring { position: absolute; bottom: 25%; width: 55%; height: 10%; border: 1px solid var(--color-gold); border-radius: 50%; pointer-events: none; }
@@ -126,6 +126,11 @@
 .coin-arena.is-charging .coin-3d { animation: none; }
 .coin-arena.is-launched .coin-3d { animation: coin-spin-result 1.3s ease-out both; }
 .coin-row .coin-stage { flex-basis: clamp(88px, 24vw, 124px); }
+.coin-layer { background: repeating-conic-gradient(var(--coin-gold-deep) 0deg 3deg, var(--coin-gold-mid) 3deg 6deg); }
+.coin-front { transform: translateZ(6px); } .coin-back { transform: rotateX(180deg) translateZ(6px); }
+.coin-row .coin-stage { flex-basis: clamp(92px, 24vw, 126px); }
+.arena-controls-float { z-index: 20; }
+.hand-rig { z-index: 10; bottom: clamp(5rem, 20%, 7rem); }
 .hand-rig { position: absolute; left: 50%; bottom: clamp(3.4rem, 12%, 5rem); width: clamp(125px, 38%, 210px); height: auto; z-index: 16; transform: translateX(-50%); transform-origin: bottom center; pointer-events: none; }
 .hand-rig .thumb-joint { transform-origin: 112px 118px; }
 .hand-rig .index-joint { transform-origin: 122px 86px; }

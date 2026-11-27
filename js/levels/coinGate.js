@@ -28,7 +28,15 @@ export function animateCoinToss(outcomes) {
   const row = arena.querySelector("[data-coin-row]"), first = row?.querySelector(".coin-stage");
   if (!first) return false;
   const template = first.cloneNode(true); row.replaceChildren();
-  outcomes.forEach((v) => { const coin = template.cloneNode(true); coin.style.setProperty("--coin-final-turn", v === "G" ? "900deg" : "720deg"); coin.style.setProperty("--coin-face-angle", v === "G" ? "180deg" : "0deg"); row.append(coin); });
+  outcomes.forEach((v, index) => {
+    const coin = template.cloneNode(true);
+    const ids = new Map();
+    coin.querySelectorAll("[id]").forEach(el => { const previous = el.id; const next = `mint-${index}-${previous.replace(/^mint-\d+-/, "")}`; ids.set(previous, next); el.id = next; });
+    coin.querySelectorAll("[href], [fill], [stroke]").forEach(el => { for (const attr of ["href", "fill", "stroke"]) { const value = el.getAttribute(attr); if (!value) continue; let updated = value; ids.forEach((id, previous) => { updated = updated.replaceAll(`#${previous}`, `#${id}`); }); el.setAttribute(attr, updated); } });
+    coin.style.setProperty("--coin-final-turn", v === "G" ? "1620deg" : "1440deg");
+    coin.style.setProperty("--coin-face-angle", v === "G" ? "180deg" : "0deg");
+    row.append(coin);
+  });
   const label = arena.querySelector("[data-coin-result]"), reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   arena.classList.add("is-tossing", "is-charging"); label.textContent = "Koin sedang dilempar…"; playCoinPhase("coinCharge");
   const later = (ms, fn) => window.setTimeout(() => { if (arena.isConnected) fn(); }, reduced ? Math.min(ms, 120) : ms);
