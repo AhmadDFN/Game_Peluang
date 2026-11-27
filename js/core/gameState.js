@@ -1,4 +1,4 @@
-import { ROUND_CONFIG, SCREEN, TOTAL_ROUNDS } from "./constants.js?v=11803ac";
+import { ROUND_CONFIG, SCREEN, TOTAL_ROUNDS } from "./constants.js?v=nw1";
 
 const createInitialState = () => ({
   app: { screen: SCREEN.SPLASH_UNIPMA, splashStartedAt: Date.now(), isMuted: false },

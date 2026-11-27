@@ -1,5 +1,5 @@
-import { AI_DIFFICULTY, AUTHOR_TEXT, CAMPUS_NAME, GAME_MODE, GAME_TAGLINE, GAME_TITLE, SCREEN } from "../core/constants.js?v=nw-wayang-1";
-import { getState, subscribe } from "../core/gameState.js?v=nw-wayang-1";
+import { AI_DIFFICULTY, AUTHOR_TEXT, CAMPUS_NAME, GAME_MODE, GAME_TAGLINE, GAME_TITLE, SCREEN } from "../core/constants.js?v=nw1";
+import { getState, subscribe } from "../core/gameState.js?v=nw1";
 
 const button = (label, action, className = "button-secondary") =>
   `<button class="button ${className}" type="button" data-action="${action}">${label}</button>`;

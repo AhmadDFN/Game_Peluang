@@ -1,4 +1,4 @@
-import { getState, subscribe } from "../core/gameState.js?v=11803ac";
+import { getState, subscribe } from "../core/gameState.js?v=nw1";
 
 let currentScreen = null;
 let transitionTimer = null;

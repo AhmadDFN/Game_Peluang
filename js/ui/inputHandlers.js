@@ -1,4 +1,4 @@
-import { playClick, playHover } from "../core/audioEngine.js?v=11803ac";
+import { playClick, playHover } from "../core/audioEngine.js?v=nw1";
 
 export const initInputHandlers = (handler) => {
   document.addEventListener("pointerover", (event) => {
