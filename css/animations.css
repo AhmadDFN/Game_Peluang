@@ -6,9 +6,10 @@
 @keyframes splash-cinematic { 0% { opacity: 0; transform: scale(0.92); } 18% { opacity: 1; transform: scale(1); } 72% { opacity: 1; transform: scale(1.015); } 100% { opacity: 0; transform: scale(1.035); } }
 @keyframes splash-control-in { from { opacity: 0; transform: translateY(0.5rem); } to { opacity: 1; transform: translateY(0); } }
 @keyframes locked-glow { 0%, 100% { border-color: var(--color-border); } 50% { border-color: rgba(245, 208, 97, 0.38); } }
-@keyframes coin-toss { 0% { transform: translate(-50%, 0) scale(0.9); } 30% { transform: translate(-50%, -10rem) scale(1.08); } 62% { transform: translate(-50%, -6rem) scale(1); } 84% { transform: translate(-50%, -0.8rem) scale(0.98); } 100% { transform: translate(-50%, 0) scale(1); } }
-@keyframes coin-spin { 0% { transform: rotateX(-12deg) rotateY(-18deg); } 24% { transform: rotateX(500deg) rotateY(720deg); } 64% { transform: rotateX(1220deg) rotateY(1440deg); } 100% { transform: rotateX(1440deg) rotateY(1800deg); } }
-@keyframes hand-flick { 0%, 100% { transform: rotate(0deg) translateY(0); } 20% { transform: rotate(-4deg) translateY(0.2rem); } 38% { transform: rotate(9deg) translateY(-1rem); } 62% { transform: rotate(2deg) translateY(0.1rem); } }
+@keyframes coin-toss { 0% { transform: translate(-50%, 0) scale(1); } 22% { transform: translate(-50%, 1rem) scale(0.96); } 42% { transform: translate(-50%, -220px) scale(1.4); } 58% { transform: translate(-50%, -300px) scale(1.32); } 72% { transform: translate(-50%, -220px) scale(1.08); } 88% { transform: translate(-50%, -2px) scale(0.98); } 94% { transform: translate(-50%, -14px) scale(1.02); } 100% { transform: translate(-50%, 0) scale(1); } }
+@keyframes coin-spin { 0% { transform: rotateX(-12deg) rotateY(-18deg); } 22% { transform: rotateX(360deg) rotateY(180deg); } 44% { transform: rotateX(900deg) rotateY(480deg); } 66% { transform: rotateX(1440deg) rotateY(720deg); } 84% { transform: rotateX(1440deg) rotateY(720deg); } 100% { transform: rotateX(0deg) rotateY(0deg); } }
+@keyframes hand-flick { 0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); } 18% { transform: translateX(-50%) translateY(0.8rem) rotate(-3deg); } 34% { transform: translateX(-50%) translateY(-1rem) rotate(5deg); } 52% { transform: translateX(-50%) translateY(-0.2rem) rotate(-1deg); } 72% { transform: translateX(-50%) translateY(0) rotate(0deg); } }
+@keyframes coin-specular { 0%, 50% { transform: translateX(-130%) skewX(-18deg); } 72%, 100% { transform: translateX(130%) skewX(-18deg); } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }
