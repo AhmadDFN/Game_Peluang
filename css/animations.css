@@ -10,6 +10,9 @@
 @keyframes coin-spin { 0% { transform: rotateX(-12deg) rotateY(-18deg); } 22% { transform: rotateX(360deg) rotateY(180deg); } 44% { transform: rotateX(900deg) rotateY(480deg); } 66% { transform: rotateX(1440deg) rotateY(720deg); } 84% { transform: rotateX(1440deg) rotateY(720deg); } 100% { transform: rotateX(0deg) rotateY(0deg); } }
 @keyframes hand-flick { 0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); } 18% { transform: translateX(-50%) translateY(0.8rem) rotate(-3deg); } 34% { transform: translateX(-50%) translateY(-1rem) rotate(5deg); } 52% { transform: translateX(-50%) translateY(-0.2rem) rotate(-1deg); } 72% { transform: translateX(-50%) translateY(0) rotate(0deg); } }
 @keyframes coin-specular { 0%, 50% { transform: translateX(-130%) skewX(-18deg); } 72%, 100% { transform: translateX(130%) skewX(-18deg); } }
+@keyframes shadow-toss { 0%,100% { transform: scale(1); opacity: .75; } 50% { transform: scale(.4); opacity: .25; } }
+@keyframes table-impact { 0%,84%,100% { transform: translateX(0); } 87%,91%,95% { transform: translateX(3px); } 89%,93%,97% { transform: translateX(-3px); } }
+@keyframes spark-flash { 0%,83%,100% { text-shadow: none; } 88% { text-shadow: 0 0 12px var(--color-gold-bright), 0 0 25px var(--color-gold); } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }

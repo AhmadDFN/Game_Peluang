@@ -10,6 +10,12 @@ const getAudioContext = () => {
 
 export const setMuted = (value) => { muted = Boolean(value); };
 export const isMuted = () => muted;
+export const playHover = () => {
+  if (muted || !audioContext) return;
+  const t = audioContext.currentTime, o = audioContext.createOscillator(), g = audioContext.createGain();
+  o.frequency.value = 900; g.gain.setValueAtTime(0.025, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.04);
+  o.connect(g).connect(audioContext.destination); o.start(t); o.stop(t + 0.05);
+};
 export const playClick = () => {
   if (muted) return;
   const context = getAudioContext();

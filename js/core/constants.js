@@ -1,7 +1,7 @@
 export const GAME_TITLE = "Probify";
 export const GAME_TAGLINE = "Probability + Simplify";
 export const CAMPUS_NAME = "Universitas PGRI Madiun (UNIPMA)";
-export const CAMPUS_LOGO_PATH = "./assets/images/logo-unipma.webp";
+export const CAMPUS_LOGO_PATH = "./assets/images/logo-unipma-clean.png";
 export const AUTHOR_TEXT = "Coming Soon";
 
 export const SCREEN = Object.freeze({

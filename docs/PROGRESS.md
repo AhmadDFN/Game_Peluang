@@ -1,5 +1,11 @@
 # Probify — Catatan Progres
 
+## Pembaruan game feel
+
+- Membersihkan latar kotak logo menggunakan flood-fill dan menyimpan PNG transparan.
+- Mengunci gulir halaman, memusatkan panggung, dan menambahkan bingkai serta vignette.
+- Menambah tombol bertekan, nada hover, bayangan koin, kilau dan getaran meja.
+
 ## 2026-11-27 — Fase 1 Visual & Layout Upgrade
 
 - Menstandarkan seluruh pembungkus layar ke layout flex vertikal dengan alignment center dan responsivitas mobile.
