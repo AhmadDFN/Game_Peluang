@@ -6,7 +6,18 @@ import { initInputHandlers } from "../ui/inputHandlers.js";
 import { initRenderers } from "../ui/renderers.js";
 import { initScreenManager } from "../ui/screenManager.js";
 
-const goTo = (screen) => updateState((state) => ({ ...state, app: { ...state.app, screen } }));
+const history = [];
+const goTo = (screen, direction = "forward") => {
+  const current = getState().app.screen;
+  if (screen === current) return;
+  if (direction === "back") history.pop(); else history.push(current);
+  updateState((state) => ({ ...state, app: { ...state.app, screen, transitionDirection: direction } }));
+};
+const goBack = () => {
+  const previous = history.at(-1);
+  if (previous) goTo(previous, "back");
+  else if (getState().app.screen !== SCREEN.MAIN_MENU) goTo(SCREEN.MAIN_MENU, "back");
+};
 const setSession = (patch) => updateState((state) => ({ ...state, session: { ...state.session, ...patch } }));
 
 const previewCoinToss = () => {
@@ -22,7 +33,7 @@ const previewCoinToss = () => {
 
 const handleAction = (action) => {
   if (action === "skip-splash") return goTo(SCREEN.MAIN_MENU);
-  if (action === "go-main-menu") { resetSession(); return goTo(SCREEN.MAIN_MENU); }
+  if (action === "go-main-menu" || action === "go-back") return goBack();
   if (action === "go-mode-select") return goTo(SCREEN.MODE_SELECT);
   if (action === "go-level-select") return goTo(SCREEN.LEVEL_SELECT);
   if (action === "go-formula-book") return goTo(SCREEN.FORMULA_BOOK);
