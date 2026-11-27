@@ -1,5 +1,9 @@
 # Probify — Catatan Progres
 
+## Perbaikan sisi Gambar
+
+- Memisahkan posisi sisi depan dan belakang pada sumbu kedalaman agar tepi koin tidak menutupi ilustrasi Gambar saat hasilnya G.
+
 ## Penyempurnaan arena koin
 
 - Panel kontrol menggunakan tiga kolom agar tombol tetap berada dalam bingkai dan dapat disentuh pada layar kecil.
