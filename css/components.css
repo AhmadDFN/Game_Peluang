@@ -107,6 +107,26 @@
 .coin-arena.result-a { --coin-final-turn: 720deg; }
 .coin-arena.is-tossing .coin-3d { animation-name: coin-spin-result; }
 @media (max-width: 380px) { .arena-controls-float { width: calc(100% - 1rem); gap: .3rem; padding: .4rem; } .arena-controls-float .button { font-size: .8rem; padding-inline: .4rem; } }
+.coin-layer { position: absolute; inset: 0; border-radius: 50%; background: var(--coin-gold-deep); }
+.layer-1 { transform: translateZ(-4px); } .layer-2 { transform: translateZ(-2px); } .layer-3 { transform: translateZ(0); } .layer-4 { transform: translateZ(2px); } .layer-5 { transform: translateZ(4px); }
+.coin-front { transform: translateZ(6px); } .coin-back { transform: rotateY(180deg) translateZ(6px); }
+.coin-glare { position: absolute; inset: 0; z-index: 3; border-radius: 50%; background: radial-gradient(circle at 35% 25%, var(--coin-flash), transparent 65%); opacity: 0; pointer-events: none; transition: opacity .2s; }
+.is-tilting .coin-glare { opacity: .6; }
+.coin-row .coin-body { transform: rotateY(var(--coin-face-angle, 0deg)); }
+.coin-arena.is-tilting:not(.is-tossing) .coin-body { transform: rotateX(var(--tilt-x, 0deg)) rotateY(calc(var(--coin-face-angle, 0deg) + var(--tilt-y, 0deg))); }
+.fx-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 6; pointer-events: none; }
+.apex-flash { position: absolute; top: 5%; left: 25%; width: 50%; aspect-ratio: 1; background: radial-gradient(circle, var(--coin-flash), transparent 70%); opacity: 0; pointer-events: none; }
+.pedestal, .shockwave-ring { position: absolute; bottom: 25%; width: 55%; height: 10%; border: 1px solid var(--color-gold); border-radius: 50%; pointer-events: none; }
+.shockwave-ring { opacity: 0; z-index: 3; }
+.is-apex .apex-flash { animation: apexBurst .55s ease-out both; }
+.is-impact .shockwave-ring { animation: ringExpand .65s ease-out both; }
+.is-impact { animation: heavyShake .35s ease both; }
+.coin-arena.is-charging .coin-row .coin-stage { animation: chargeVibrate .22s linear infinite; }
+.coin-arena.is-launched .coin-row .coin-stage { animation: proTossArc 1.3s ease both; }
+.coin-arena.is-charging .coin-3d { animation: none; }
+.coin-arena.is-launched .coin-3d { animation: coin-spin-result 1.3s ease-out both; }
+.coin-row .coin-stage { flex-basis: clamp(88px, 24vw, 124px); }
+@media (prefers-reduced-motion: reduce) { .coin-arena.is-tossing .coin-row .coin-stage, .coin-arena.is-tossing .coin-3d, .coin-arena.is-impact { animation: none !important; } }
 .coin-row { position: absolute; top: 30%; left: 50%; transform: translateX(-50%); width: min(92%, 25rem); display: flex; justify-content: center; gap: clamp(.3rem, 2vw, 1rem); perspective: 900px; }
 .coin-row .coin-stage { position: relative; inset: auto; flex: 0 1 7.5rem; width: min(25vw, 7.5rem); height: auto; aspect-ratio: 1; transform: none; }
 .coin-arena.is-tossing .coin-row .coin-stage { animation: toss-row 1.7s ease both; }

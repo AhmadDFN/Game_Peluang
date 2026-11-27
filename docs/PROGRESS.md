@@ -1,5 +1,10 @@
 # Probify — Catatan Progres
 
+## Pro 3D Coin Juice
+
+- Menambahkan pengendali `animateCoinToss(outcomes)` pada `js/levels/coinGate.js`, audio empat fase, tilt, kilatan, gelombang, dan partikel canvas.
+- Preview tetap satu koin; engine matematika belum diintegrasikan dan dapat memasok array A/G saat tersedia.
+
 ## Komponen lempar koin 3D
 
 - Mengadaptasi ilustrasi tangan dengan jempol bergerak, lintasan koin, bayangan, serta label hasil.

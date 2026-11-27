@@ -5,7 +5,7 @@ import { getState, resetSession, updateState } from "./gameState.js";
 import { initInputHandlers } from "../ui/inputHandlers.js";
 import { initRenderers } from "../ui/renderers.js";
 import { initScreenManager } from "../ui/screenManager.js";
-import { triggerCoinToss } from "../ui/coinAnimation.js";
+import { animateCoinToss, initCoinTilt } from "../levels/coinGate.js";
 
 const history = [];
 const goTo = (screen, direction = "forward") => {
@@ -23,7 +23,7 @@ const setSession = (patch) => updateState((state) => ({ ...state, session: { ...
 
 const previewCoinToss = () => {
   // Preview sementara; gameplay nanti memasok hasil dari mathEngine.
-  triggerCoinToss(Math.random() < 0.5 ? "A" : "G");
+  animateCoinToss([Math.random() < 0.5 ? "A" : "G"]);
 };
 
 const handleAction = (action) => {
@@ -88,6 +88,7 @@ const init = () => {
   initScreenManager();
   initRenderers();
   initInputHandlers(handleAction);
+  initCoinTilt();
   window.addEventListener("beforeunload", () => savePreferences({ isMuted: getState().app.isMuted }));
   startSplash();
 };

@@ -10,6 +10,19 @@ const getAudioContext = () => {
 
 export const setMuted = (value) => { muted = Boolean(value); };
 export const isMuted = () => muted;
+export function playCoinPhase(phase) {
+  if (muted) return;
+  const options = { coinCharge: ["sine", 220, 520], coinLaunch: ["triangle", 600, 1900], coinApex: ["sine", 2400, 3200], coinImpact: ["triangle", 180, 55] };
+  if (!options[phase]) return;
+  const context = getAudioContext();
+  if (!context) return;
+  if (context.state === "suspended") context.resume().catch(() => {});
+  const [type, start, end] = options[phase];
+  const osc = context.createOscillator(), gain = context.createGain(), t = context.currentTime;
+  osc.type = type; osc.frequency.setValueAtTime(start, t); osc.frequency.exponentialRampToValueAtTime(end, t + .22);
+  gain.gain.setValueAtTime(.0001, t); gain.gain.exponentialRampToValueAtTime(.08, t + .01); gain.gain.exponentialRampToValueAtTime(.0001, t + .3);
+  osc.connect(gain).connect(context.destination); osc.start(t); osc.stop(t + .31);
+}
 export const playHover = () => {
   if (muted || !audioContext) return;
   const t = audioContext.currentTime, o = audioContext.createOscillator(), g = audioContext.createGain();
