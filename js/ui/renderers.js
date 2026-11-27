@@ -143,16 +143,57 @@ const coinSideSvg = (side, idx = 0) => side === "front" ? coinFrontSvgRaw(idx) :
 // ─── Render Functions ─────────────────────────────────────────────────────────
 const renderMainMenu = () => `<div class="hero-grid"><div class="hero-brand">${probifyLogo()}<p class="game-wordmark">${GAME_TITLE}</p>${header("Game Edukasi Teori Peluang", "Probability + Simplify", "Pelajari peluang dengan cara yang sederhana dan menyenangkan.")}</div><div class="card menu-card"><div class="actions">${button("Mulai Bermain", "go-mode-select", "button-primary")}${button("Buku Rumus Koin", "go-formula-book")}${button("Kredit", "go-credits")}</div></div></div>`;
 
-const renderModeSelect = (state) => `<div class="mode-select-content">${backButton()}${header("Langkah 1 dari 2", "Pilih Mode", "Tentukan cara bermain sebelum memasuki gerbang koin.")}<div class="card-grid">${[
+const renderModeSelect = (state) => `<div class="mode-select-content">
+  <div class="header-topline">
+    ${backButton()}
+    <div class="header-titles">
+      <p class="eyebrow">Langkah 1 dari 2</p>
+      <h1 class="title" id="mode-select-title">Pilih Mode</h1>
+    </div>
+    <div class="header-spacer"></div>
+  </div>
+  <p class="subtitle">Tentukan cara bermain sebelum memasuki gerbang koin.</p>
+  <div class="card-grid">${[
   [GAME_MODE.SOLO_AI, "Solo vs AI", "Uji pemahamanmu melawan lawan komputer dengan tingkat kesulitan pilihanmu.", "pilih-mode-solo"],
   [GAME_MODE.PASS_AND_PLAY, "1v1 Pass & Play", "Bermain berdua pada satu perangkat secara bergantian.", "pilih-mode-pass"]
 ].map(([mode, title, description, action]) => `<article class="card choice-card ${state.session.mode === mode ? "is-selected" : ""}"><span class="badge">Mode</span><h2>${title}</h2><p>${description}</p>${button("Pilih Mode", action, state.session.mode === mode ? "button-primary" : "button-secondary")}</article>`).join("")}</div>${state.session.mode === GAME_MODE.SOLO_AI ? `<div class="card stack ai-difficulty-panel"><h2>Pilih Tingkat AI</h2><div class="actions">${[[AI_DIFFICULTY.EASY,"Mudah"],[AI_DIFFICULTY.NORMAL,"Normal"],[AI_DIFFICULTY.HARD,"Sulit"]].map(([id,label]) => button(label, `pilih-ai-${id}`, state.session.aiDifficulty === id ? "button-primary" : "button-secondary")).join("")}</div></div>` : ""}<div class="actions mode-select-actions">${state.session.mode ? button("Lanjut Pilih Level", "go-level-select", "button-primary") : ""}</div></div>`;
 
-const renderLevelSelect = () => `<div>${backButton()}<button class="floating-icon level-info-button" type="button" data-action="show-level-info" aria-label="Buka informasi pilih level">i</button><p class="eyebrow">Langkah 2 dari 2</p><h1 class="title" id="level-select-title">Pilih Level</h1><div class="card-grid"><article class="card choice-card"><span class="badge">Level 1 • Aktif</span><h2>Gerbang Koin</h2><p>Lima ronde progresif dengan notasi Angka (A) dan Gambar (G).</p>${button("Mulai Level 1", "go-coin-gate", "button-primary")}</article><article class="card choice-card locked"><span class="badge badge-locked">Terkunci</span><h2>Level 2: Arena Dadu</h2><p>Eksplorasi peluang dadu akan segera tersedia.</p><span class="badge badge-locked">Coming Soon</span></article><article class="card choice-card locked"><span class="badge badge-locked">Terkunci</span><h2>Level 3: Misteri Kartu</h2><p>Rahasia peluang kartu sedang dipersiapkan.</p><span class="badge badge-locked">Coming Soon</span></article></div></div>`;
+const renderLevelSelect = () => `<div class="level-select-content">
+  <div class="header-topline">
+    ${backButton()}
+    <div class="header-titles">
+      <p class="eyebrow">Langkah 2 dari 2</p>
+      <h1 class="title" id="level-select-title">Pilih Level</h1>
+    </div>
+    <button class="btn-icon btn-hint level-info-button" type="button" data-action="show-level-info" aria-label="Buka petunjuk level" title="Petunjuk">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/>
+      </svg>
+    </button>
+  </div>
+  <div class="card-grid"><article class="card choice-card"><span class="badge">Level 1 • Aktif</span><h2>Gerbang Koin</h2><p>Lima ronde progresif dengan notasi Angka (A) dan Gambar (G).</p>${button("Mulai Level 1", "go-coin-gate", "button-primary")}</article><article class="card choice-card locked"><span class="badge badge-locked">Terkunci</span><h2>Level 2: Arena Dadu</h2><p>Eksplorasi peluang dadu akan segera tersedia.</p><span class="badge badge-locked">Coming Soon</span></article><article class="card choice-card locked"><span class="badge badge-locked">Terkunci</span><h2>Level 3: Misteri Kartu</h2><p>Rahasia peluang kartu sedang dipersiapkan.</p><span class="badge badge-locked">Coming Soon</span></article></div></div>`;
 
-const renderFormulaBook = () => `<div>${backButton()}<div class="two-column"><div>${header("Buku Rumus Koin", "Peluang, dibuat sederhana.", "Kenali ruang sampel sebelum menentukan peluang sebuah kejadian.")}<div class="card"><ul class="formula-list"><li><strong>Ruang sampel</strong><br /><span class="formula">n(S) = 2<sup>n</sup></span><br /><span class="muted">n adalah banyaknya koin.</span></li><li><strong>Peluang kejadian A</strong><br /><span class="formula">P(A) = n(A) / n(S)</span><br /><span class="muted">n(A) adalah banyak titik sampel yang cocok.</span></li></ul></div></div><div class="card"><h2>Notasi Koin</h2><p><strong>A</strong> berarti Angka, sedangkan <strong>G</strong> berarti Gambar.</p><p class="muted">Satu koin memiliki ruang sampel {A, G}. Dua koin memiliki {AA, AG, GA, GG}. Urutan tetap diperhitungkan.</p></div></div></div>`;
+const renderFormulaBook = () => `<div class="formula-book-content">
+  <div class="header-topline">
+    ${backButton()}
+    <div class="header-titles">
+      <p class="eyebrow">Buku Rumus Koin</p>
+      <h1 class="title">Teori Peluang</h1>
+    </div>
+    <div class="header-spacer"></div>
+  </div>
+  <div class="two-column"><div><div class="card"><ul class="formula-list"><li><strong>Ruang sampel</strong><br /><span class="formula">n(S) = 2<sup>n</sup></span><br /><span class="muted">n adalah banyaknya koin.</span></li><li><strong>Peluang kejadian A</strong><br /><span class="formula">P(A) = n(A) / n(S)</span><br /><span class="muted">n(A) adalah banyak titik sampel yang cocok.</span></li></ul></div></div><div class="card"><h2>Notasi Koin</h2><p><strong>A</strong> berarti Angka, sedangkan <strong>G</strong> berarti Gambar.</p><p class="muted">Satu koin memiliki ruang sampel {A, G}. Dua koin memiliki {AA, AG, GA, GG}. Urutan tetap diperhitungkan.</p></div></div></div>`;
 
-const renderCredits = () => `<div>${backButton()}<div class="hero-grid"><div>${header("Tentang Probify", "Dibuat untuk belajar.", "Sebuah proyek individu untuk menghadirkan teori peluang SMA dalam pengalaman interaktif.")}</div><div class="card stack"><p><strong>Institusi</strong><br />${CAMPUS_NAME}</p><p><strong>Pengembang</strong><br />${AUTHOR_TEXT}</p><p><strong>Teknologi</strong><br />HTML5, CSS3, dan Vanilla JavaScript ES6 Modules.</p></div></div></div>`;
+const renderCredits = () => `<div class="credits-content">
+  <div class="header-topline">
+    ${backButton()}
+    <div class="header-titles">
+      <p class="eyebrow">Tentang Probify</p>
+      <h1 class="title">Kredit Game</h1>
+    </div>
+    <div class="header-spacer"></div>
+  </div>
+  <div class="hero-grid"><div><p class="subtitle">Sebuah proyek individu untuk menghadirkan teori peluang SMA dalam pengalaman interaktif.</p></div><div class="card stack"><p><strong>Institusi</strong><br />${CAMPUS_NAME}</p><p><strong>Pengembang</strong><br />${AUTHOR_TEXT}</p><p><strong>Teknologi</strong><br />HTML5, CSS3, dan Vanilla JavaScript ES6 Modules.</p></div></div></div>`;
 
 const renderCoinGate = (state) => {
   const muteIcon = state.app.isMuted

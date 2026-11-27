@@ -91,6 +91,46 @@
   align-items: center;
   width: 100%;
   position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.header-spacer {
+  width: 44px;
+  height: 44px;
+}
+
+/* Dialog / Modal Styling Neo-Wayang */
+.level-info-dialog {
+  border: 1.5px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  background: rgba(11, 15, 25, 0.96);
+  color: var(--color-text);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.2);
+  backdrop-filter: blur(16px);
+  padding: 0;
+  max-width: min(calc(100% - 2rem), 28rem);
+  width: 100%;
+  margin: auto;
+}
+
+.level-info-dialog::backdrop {
+  background: rgba(5, 7, 12, 0.78);
+  backdrop-filter: blur(4px);
+}
+
+.level-info-content {
+  position: relative;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.level-info-content .dialog-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
 }
 
 .btn-icon {

@@ -35,10 +35,10 @@
 @media (max-height: 720px) {
   #mode-select .page-content { display: grid; place-items: center; overflow: hidden; }
   .mode-select-content { display: grid; width: min(100%, 52rem); justify-items: center; gap: clamp(.35rem, 1.2vh, .65rem); }
-  .mode-select-content > .screen-back { position: absolute; top: .65rem; left: .85rem; z-index: 4; min-height: 2.5rem; }
-  .mode-select-content > .eyebrow { margin: 0; font-size: .72rem; }
-  .mode-select-content > .title { margin: 0; font-size: clamp(1.7rem, 5vh, 2.5rem); }
-  .mode-select-content > .subtitle { margin: 0; font-size: .86rem; }
+  .mode-select-content .header-topline { margin-bottom: 0.2rem; }
+  .mode-select-content .eyebrow { margin: 0; font-size: .72rem; }
+  .mode-select-content .title { margin: 0; font-size: clamp(1.7rem, 5vh, 2.5rem); }
+  .mode-select-content .subtitle { margin: 0; font-size: .86rem; }
   .mode-select-content .card-grid { width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
   .mode-select-content .choice-card { min-height: 0; gap: .35rem; padding: .75rem; }
   .mode-select-content .choice-card h2 { margin: 0; font-size: clamp(1rem, 2.7vh, 1.3rem); }
@@ -57,10 +57,10 @@
   .page-screen { padding: max(.75rem, env(safe-area-inset-top)) max(.75rem, env(safe-area-inset-right)) max(.75rem, env(safe-area-inset-bottom)) max(.75rem, env(safe-area-inset-left)); }
   #mode-select .page-content { display: grid; place-items: center; overflow-y: auto; }
   .mode-select-content { display: grid; width: min(100%, 28rem); margin: auto; justify-items: center; gap: clamp(.4rem, 1.4dvh, .8rem); }
-  .mode-select-content > .screen-back { position: static; justify-self: start; min-height: 44px; }
-  .mode-select-content > .eyebrow { margin: 0; font-size: .7rem; }
-  .mode-select-content > .title { margin: 0; font-size: clamp(1.7rem, 4.5dvh, 2.5rem); }
-  .mode-select-content > .subtitle { margin: 0; font-size: .85rem; line-height: 1.35; }
+  .mode-select-content .header-topline { margin-bottom: 0.2rem; }
+  .mode-select-content .eyebrow { margin: 0; font-size: .7rem; }
+  .mode-select-content .title { margin: 0; font-size: clamp(1.7rem, 4.5dvh, 2.5rem); }
+  .mode-select-content .subtitle { margin: 0; font-size: .85rem; line-height: 1.35; }
   .mode-select-content .card-grid { display: grid; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
   .mode-select-content .choice-card { min-width: 0; min-height: 0; padding: .75rem .55rem; gap: .4rem; justify-items: center; text-align: center; }
   .mode-select-content .choice-card h2 { margin: 0; font-size: clamp(1rem, 4vw, 1.2rem); overflow-wrap: anywhere; }
