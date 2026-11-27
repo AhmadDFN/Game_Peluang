@@ -14,7 +14,8 @@
 | Logo institusi | `./assets/images/logo-unipma.webp` |
 | Pengembang | Proyek Individu |
 | Status kredit | Coming Soon |
-| Tema | Dark & Gold elegan |
+| Tema | Neo-Wayang (Dark & Gold) elegan |
+| Identitas Level 1 | Koin Batik Kawung (A) & Gunungan (G), Tangan Dalang Beskap Parang, Gamelan Slendro |
 | Teknologi | HTML5, CSS3, Vanilla JavaScript ES6 Modules |
 | Suara | Web Audio API secara prosedural; tanpa file audio eksternal |
 

@@ -83,6 +83,26 @@
 - Memperbarui dokumentasi `CONCEPT_GDD.md` dan menandai checklist `Fase 1` di `TODO.md` sebagai tuntas (100% sempurna).
 - Mempertahankan batasan ketat: tidak menyentuh kode Fase 2 dan Fase 3.
 
+## 2026-11-27 — Integrasi Identitas Neo-Wayang (Level 1: Gerbang Koin)
+
+- Mengintegrasikan estetika budaya Nusantara **Neo-Wayang (Dark & Gold)** ke dalam arena Level 1 (`coin-gate`).
+- **Panggung Kelir & Siluet Gunungan**: Memasang SVG Gunungan (Kayon) lengkap dengan Pohon Hayat dan Gerbang Candi (`.gunungan-backdrop`) serta efek cahaya *Blencong* (`.blencong-glow`) saat koin melayang di udara.
+- **Koin 3D Edisi Batik Kawung & Gunungan**:
+  - Sisi Depan (`A` — Angka): Relief emas dengan latar motif **Batik Kawung**, teks melingkar `• SISI ANGKA •` dan `BATIK KAWUNG`, serta huruf serif **`A`**.
+  - Sisi Belakang (`G` — Gambar): Ukiran ikonik **Gunungan Wayang** dengan Pohon Hayat, teks melingkar `• SISI GAMBAR •`, dan simbol **`( G )`**.
+  - **Mekanisme Anti-Konflik Multi-Koin**: Mengisolasi seluruh referensi atribut SVG `id`, `href`, `fill`, dan `stroke` dengan prefix unik `nw-{index}-` agar tidak saling menimpa saat melempar 2 atau 3 koin sekaligus.
+- **Tangan Sang Dalang**: Mengganti ilustrasi tangan menjadi tangan Dalang terartikulasi mengenakan **lengan Beskap hitam beludru** dengan kancing emas dan **manset Batik Parang Emas**, lengkap dengan animasi sabetan sentil koin (`armThrust`, `thumbFlickUp`, `indexRecoil`).
+- **Audio Pentatonik Gamelan Slendro**: Memperbarui efek audio prosedural Web Audio API mengikuti laras Slendro:
+  - *Launch*: sapuan nada Ji (`528Hz` naik ke `1056Hz`).
+  - *Apex*: denting Bonang Slendro Ma $\rightarrow$ Nem (`792Hz` $\rightarrow$ `880Hz`).
+  - *Impact*: dengung Gong Kempul (`145Hz` turun ke `66Hz`).
+
+## 2026-11-27 — Perbaikan Bug Pemilihan Mode (Normalisasi Versi Modul ES)
+
+- **Masalah**: Layar *Pilih Mode* tidak merespons klik pemain saat memilih *Solo vs AI* atau *1v1 Pass & Play*.
+- **Penyebab (Root Cause)**: Perbedaan query string versi cache-buster antara file (`renderers.js` mengimpor dengan `?v=nw-wayang-1` sedangkan file core lainnya mengimpor dengan `?v=11803ac`). Browser memperlakukan file yang sama dengan parameter versi berbeda sebagai instance ES Module yang terpisah. Akibatnya, `gameState` yang di-*subscribe* oleh renderer berbeda dengan `gameState` yang diubah oleh controller.
+- **Solusi**: Menyeragamkan seluruh parameter query string import di semua file JavaScript dan link tag di `index.html` ke satu versi standar `?v=nw1`. Seluruh sistem state dan UI renderer kini tersambung 100% pada satu instance terpusat.
+
 - Menstandarkan seluruh pembungkus layar ke layout flex vertikal dengan alignment center dan responsivitas mobile.
 - Menambahkan identitas splash UNIPMA lengkap dengan nama universitas dan fakultas.
 - Memindahkan tombol `Lewati` ke pojok kanan atas splash.
