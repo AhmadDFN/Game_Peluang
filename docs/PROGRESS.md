@@ -1,5 +1,9 @@
 # Probify — Catatan Progres
 
+## Perbaikan tampilan Royal Mint
+
+- Memperbaiki format referensi gradasi SVG yang menyebabkan modul renderer gagal dimuat.
+
 ## Koin Royal Mint
 
 - Mengganti kedua sisi koin dengan SVG relief Royal Mint dan memberi ID SVG unik untuk setiap koin.
