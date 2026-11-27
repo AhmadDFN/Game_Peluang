@@ -1,5 +1,11 @@
 # Probify — Catatan Progres
 
+## Perbaikan live test — Pilih Mode
+
+- Menghapus tombol Kembali duplikat di bagian bawah layar Pilih Mode.
+- Memadatkan kartu mode dan panel tingkat AI pada viewport dengan tinggi terbatas.
+- Menjaga Back di posisi atas dan aksi lanjut sebagai satu kontrol bawah.
+
 ## 2026-11-27 — Navigasi ringkas dan kontrol arena
 
 - Menyederhanakan pergantian stage menjadi fade singkat agar alur pilih mode/AI/level terasa langsung.
