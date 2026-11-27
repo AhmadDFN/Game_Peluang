@@ -125,3 +125,20 @@
 - Menambahkan status ronde, skor, giliran, tombol lempar, mute, dan kembali pada arena.
 - Memindahkan dokumentasi fondasi ke folder `docs/`.
 - Gameplay ronde, engine peluang, AI, Hint, dan evaluasi tetap ditunda sesuai batas Fase 1.
+
+## 2026-11-28 — Standardisasi Header, Tombol Back, Hint Level Select, dan Close Pop-up Neo-Wayang
+
+- **Standardisasi Header 3 Kolom (`.header-topline`)**:
+  - Mengimplementasikan grid 3 bagian (`44px 1fr 44px`) pada seluruh layar menu (`#mode-select`, `#level-select`, `#formula-book`, `#credits`, serta `#coin-gate`).
+  - Mengunci posisi tombol **Kembali** (`.btn-icon.btn-back`) selalu di pojok kiri atas dan judul layar rata tengah secara presisi.
+- **Tombol Ikon Lingkaran Emas (`.btn-icon`)**:
+  - Desain tombol melingkar konsisten `42x42px` bertema gelap `rgba(17, 23, 38, 0.92)`, border emas `1.5px solid rgba(212, 175, 55, 0.55)`, teks/ikon `#FFE680`, dan efek hover zoom halus.
+  - Memasang **inline SVG panah kembali** (`M19 12H5M12 19l-7-7 7-7`) pada semua tombol Back untuk mencegah kotak kosong di berbagai resolusi layar.
+- **Tombol Hint pada Pilih Level (`Level Select`)**:
+  - Mengganti huruf `i` teks biasa pada `#level-select` menjadi tombol ikon emas bohlam (`.btn-icon.btn-hint`) di pojok kanan atas yang serasi dengan layar koin.
+- **Tombol Silang Pop-up Modern (`Level Info Dialog`)**:
+  - Mengganti simbol silang teks polos `×` pada dialog informasi level dengan tombol bulat emas (`.btn-icon.dialog-close`) berisi inline SVG tanda silang modern (`M18 6L6 18M6 6l12 12`).
+  - Menambahkan styling pop-up Neo-Wayang dengan *backdrop blur*, border emas, serta bayangan kartu mengambang.
+- **Penyederhanaan Bar Bawah Arena Koin**:
+  - Memindahkan tombol Hint dari bar bawah ke pojok kanan atas header koin.
+  - Bar bawah (`.arena-controls-float`) kini ramping dengan 2 tombol (`Lempar Koin` + `Audio/Mute`), membebaskan panggung koin dari resiko tumpang-tindih visual.
